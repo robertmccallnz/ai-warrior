@@ -7,6 +7,7 @@ Long-term visual identity reference files for The Kiwi Dialectic / AI Warrior. N
 | File | Notes |
 | --- | --- |
 | `francis-bacon-portrait.jpg` | Two-colour stencil / screenprint portrait of Francis Bacon — magenta + green on kraft. Patron-saint motif. Use as a section divider, zine cover, or pull-quote backdrop. |
+| `musenz-x-avatar.jpg` | Current X/Twitter avatar for [@musenz](https://x.com/musenz). Red koru spiral on black with "KD" wordmark. 400×400 — source asset for the wider Kiwi Dialectic identity. |
 
 ## Palette pulled from the Bacon portrait
 
