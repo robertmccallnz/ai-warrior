@@ -113,6 +113,18 @@
   .module .arrow{font-family:'Bebas Neue',sans-serif;letter-spacing:0.2em;font-size:13px;color:var(--fg)}
   .module:hover .arrow{color:var(--red)}
 
+  /* COURSES CTA (single poster card) */
+  .courses-cta{display:grid;grid-template-columns:1.05fr 1fr;gap:0;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--card-fg);transition:transform .15s ease,border-color .15s ease}
+  .courses-cta:hover{transform:translateY(-2px);border-color:var(--red)}
+  .courses-cta .cta-art{aspect-ratio:16/9;overflow:hidden;background:#000}
+  .courses-cta .cta-art svg{width:100%;height:100%;display:block}
+  .courses-cta .cta-body{padding:40px 44px;display:flex;flex-direction:column;justify-content:center}
+  .courses-cta .tag{font-family:'Bebas Neue',sans-serif;letter-spacing:0.22em;font-size:13px;color:var(--red)}
+  .courses-cta h3{font-family:'Bebas Neue',sans-serif;font-size:46px;line-height:1.02;margin:12px 0 14px;letter-spacing:0.02em}
+  .courses-cta p{font-size:16px;line-height:1.6;color:var(--muted);margin:0 0 22px;max-width:46ch}
+  .courses-cta .arrow.big{font-family:'Bebas Neue',sans-serif;letter-spacing:0.24em;font-size:16px;color:var(--fg);border-top:2px solid var(--red);padding-top:14px;display:inline-block;align-self:flex-start}
+  .courses-cta:hover .arrow.big{color:var(--red)}
+
   /* THINKERS */
   .thinkers{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
   .thinker{background:var(--card);border:1px solid var(--line);padding:18px;text-decoration:none;color:var(--card-fg);transition:background .15s ease}
@@ -195,6 +207,9 @@
     .hero .wrap{grid-template-columns:1fr}
     .manifesto-grid{grid-template-columns:1fr 1fr}
     .courses{grid-template-columns:1fr 1fr}
+    .courses-cta{grid-template-columns:1fr}
+    .courses-cta .cta-body{padding:28px 26px 32px}
+    .courses-cta h3{font-size:36px}
     .thinkers{grid-template-columns:repeat(3,1fr)}
     .pillars-wrap{grid-template-columns:1fr}
     .pillars{grid-template-columns:1fr 1fr}
@@ -341,127 +356,30 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div>
-        <div class="kicker">02 · The Modules</div>
-        <h2>Six Lessons. One Praxis.</h2>
+        <div class="kicker">02 · The Course</div>
+        <h2>Every Lesson Lives on Substack.</h2>
         <div class="rule" style="margin-top:14px"></div>
       </div>
       <p class="right">Every lesson is free to read on Substack. The full course — workbooks, prompts, weekly Q&amp;A — is $7/month at kiwidialectic.com.</p>
     </div>
 
-    <div class="courses">
-      <!-- Module 1 -->
-      <a class="module reveal" href="https://kiwidialectic.com/p/ai-warrior-01-see-the-frame" target="_blank" rel="noopener">
-        <div class="thumb">
-          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
-            <rect width="320" height="200" fill="#0a0a0a"/>
-            <polygon points="0,0 220,0 110,200 0,200" fill="#d7261e"/>
-            <circle cx="240" cy="80" r="46" fill="none" stroke="#fff" stroke-width="6"/>
-            <text x="240" y="92" font-family="Bebas Neue,Impact" font-size="42" fill="#fff" text-anchor="middle">01</text>
-          </svg>
-        </div>
-        <div class="body">
-          <div class="tag">Module 01 · Gramsci</div>
-          <h3>See the Frame</h3>
-          <p>Hegemony, common sense, and how to read the unstated assumptions of every model output.</p>
-          <div class="arrow">Read on Substack →</div>
-        </div>
-      </a>
-
-      <!-- Module 2 -->
-      <a class="module reveal" href="https://kiwidialectic.com/p/ai-warrior-02-build-with-purpose" target="_blank" rel="noopener">
-        <div class="thumb">
-          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
-            <rect width="320" height="200" fill="#0a0a0a"/>
-            <polygon points="320,0 100,0 230,200 320,200" fill="#d7261e"/>
-            <rect x="40" y="60" width="90" height="90" fill="#fff"/>
-            <text x="85" y="120" font-family="Bebas Neue,Impact" font-size="42" fill="#0a0a0a" text-anchor="middle">02</text>
-          </svg>
-        </div>
-        <div class="body">
-          <div class="tag">Module 02 · Kropotkin</div>
-          <h3>Build with Purpose</h3>
-          <p>Mutual aid as design principle. How to scope AI projects that serve community before capital.</p>
-          <div class="arrow">Read on Substack →</div>
-        </div>
-      </a>
-
-      <!-- Module 3 -->
-      <a class="module reveal" href="https://kiwidialectic.com/p/ai-warrior-03-emotional-sovereignty" target="_blank" rel="noopener">
-        <div class="thumb">
-          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
-            <rect width="320" height="200" fill="#0a0a0a"/>
-            <circle cx="160" cy="100" r="80" fill="#d7261e"/>
-            <circle cx="160" cy="100" r="34" fill="#fff"/>
-            <text x="160" y="112" font-family="Bebas Neue,Impact" font-size="32" fill="#0a0a0a" text-anchor="middle">03</text>
-          </svg>
-        </div>
-        <div class="body">
-          <div class="tag">Module 03 · Graeber</div>
-          <h3>Emotional Sovereignty</h3>
-          <p>Bullshit jobs, bullshit prompts. Reclaiming attention, meaning, and refusal in the age of the chatbot.</p>
-          <div class="arrow">Read on Substack →</div>
-        </div>
-      </a>
-
-      <!-- Module 4 -->
-      <a class="module reveal" href="https://kiwidialectic.com/p/ai-warrior-04-advocate-by-creating" target="_blank" rel="noopener">
-        <div class="thumb">
-          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
-            <rect width="320" height="200" fill="#0a0a0a"/>
-            <polygon points="0,200 0,40 320,160 320,200" fill="#d7261e"/>
-            <rect x="40" y="40" width="6" height="120" fill="#fff"/>
-            <polygon points="46,90 200,40 210,70 56,120" fill="#fff"/>
-            <text x="260" y="80" font-family="Bebas Neue,Impact" font-size="42" fill="#fff" text-anchor="middle">04</text>
-          </svg>
-        </div>
-        <div class="body">
-          <div class="tag">Module 04 · Freire</div>
-          <h3>Advocate by Creating</h3>
-          <p>Pedagogy of the oppressed in practice — turn every prompt into a problem-posing act of literacy.</p>
-          <div class="arrow">Read on Substack →</div>
-        </div>
-      </a>
-
-      <!-- Module 5 -->
-      <a class="module reveal" href="https://kiwidialectic.com/p/ai-warrior-05-systems-thinking" target="_blank" rel="noopener">
-        <div class="thumb">
-          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
-            <rect width="320" height="200" fill="#0a0a0a"/>
-            <g stroke="#d7261e" stroke-width="4" fill="none">
-              <circle cx="80" cy="100" r="36"/>
-              <circle cx="160" cy="60" r="22"/>
-              <circle cx="220" cy="140" r="30"/>
-              <line x1="106" y1="86" x2="142" y2="68"/>
-              <line x1="172" y1="80" x2="200" y2="120"/>
-              <line x1="110" y1="118" x2="192" y2="138"/>
-            </g>
-            <text x="270" y="120" font-family="Bebas Neue,Impact" font-size="42" fill="#fff" text-anchor="middle">05</text>
-          </svg>
-        </div>
-        <div class="body">
-          <div class="tag">Module 05 · Deleuze</div>
-          <h3>Systems Thinking</h3>
-          <p>Assemblages, rhizomes, and the political economy of the data centre. See the whole machine, not the chat window.</p>
-          <div class="arrow">Read on Substack →</div>
-        </div>
-      </a>
-
-      <!-- Module 6 -->
-      <a class="module reveal" href="https://kiwidialectic.com/p/ai-warrior-06-arm-the-class" target="_blank" rel="noopener">
-        <div class="thumb">
-          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
-            <rect width="320" height="200" fill="#0a0a0a"/>
-            <polygon points="0,0 320,0 320,40 0,200" fill="#d7261e"/>
-            <text x="160" y="160" font-family="Bebas Neue,Impact" font-size="68" fill="#fff" text-anchor="middle">06</text>
-          </svg>
-        </div>
-        <div class="body">
-          <div class="tag">Module 06 · Bakunin</div>
-          <h3>Arm the Class</h3>
-          <p>From learner to organiser. Build the local node, publish the work, share the tools, refuse the gatekeepers.</p>
-          <div class="arrow">Read on Substack →</div>
-        </div>
-      </a>
+    <a class="courses-cta reveal" href="https://www.kiwidialectic.com/s/courses" target="_blank" rel="noopener">
+      <div class="cta-art" aria-hidden="true">
+        <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice">
+          <rect width="640" height="360" fill="#0a0a0a"/>
+          <polygon points="0,0 440,0 220,360 0,360" fill="#d7261e"/>
+          <circle cx="480" cy="180" r="104" fill="none" stroke="#fff" stroke-width="10"/>
+          <text x="480" y="208" font-family="Bebas Neue,Impact" font-size="96" fill="#fff" text-anchor="middle">AI</text>
+          <rect x="0" y="340" width="640" height="20" fill="#f5f5f5"/>
+        </svg>
+      </div>
+      <div class="cta-body">
+        <div class="tag">All Courses · Kiwi Dialectic</div>
+        <h3>Every Lesson. One Index.</h3>
+        <p>The full courses catalogue lives on Substack — Gramsci, Kropotkin, Graeber, Freire, Deleuze, Bakunin, and every new lesson as it lands. Free to read; subscribe for the workbooks, prompts, and weekly Q&amp;A.</p>
+        <div class="arrow big">View all courses on Substack →</div>
+      </div>
+    </a>
     </div>
   </div>
 </section>
