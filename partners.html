@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Partners — The Kiwi Dialectic</title>
+<meta name="description" content="Kiwi Dialectic's whanaungatanga — the org we represent (Te Pā) and the indigenous AI educators, pedagogy circles, and art &amp; writing kaupapa we walk with." />
+<meta name="theme-color" content="#0a0a0a" />
+<meta property="og:title" content="Partners — The Kiwi Dialectic" />
+<meta property="og:description" content="Indigenous AI educators, pedagogy circles, and art &amp; writing kaupapa we walk with." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/hero-poster.svg" />
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0a; --bg-2:#111; --fg:#f5f5f5; --muted:#a3a3a3;
+    --red:#d7261e; --red-2:#ff2a1f; --line:rgba(255,255,255,0.12);
+    --card:#161616; --card-fg:#f5f5f5; --accent:#ffffff;
+    --maxw:1240px; --radius:2px;
+  }
+  html[data-theme="light"]{
+    --bg:#fafaf7; --bg-2:#ffffff; --fg:#0a0a0a; --muted:#525252;
+    --red:#c81912; --red-2:#d7261e; --line:rgba(0,0,0,0.12);
+    --card:#ffffff; --card-fg:#0a0a0a; --accent:#0a0a0a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:'Work Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{overflow-x:hidden}
+  a{color:inherit}
+  img,svg{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .display{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:0.02em;line-height:0.92;text-transform:uppercase}
+  .kicker{font-family:'Bebas Neue',sans-serif;letter-spacing:0.22em;font-size:13px;color:var(--red)}
+  .muted{color:var(--muted)}
+  .btn{display:inline-block;padding:14px 22px;background:var(--red);color:#fff;text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;font-size:13px;border:2px solid var(--red);transition:transform .12s ease, background .12s ease}
+  .btn:hover{background:#fff;color:var(--red);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--fg);border-color:var(--fg)}
+  .btn.ghost:hover{background:var(--fg);color:var(--bg)}
+
+  /* HEADER (mirrors index.html) */
+  header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--maxw);margin:0 auto}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
+  .brand svg{width:36px;height:36px}
+  .brand .name{font-family:'Bebas Neue',sans-serif;letter-spacing:0.18em;font-size:18px}
+  .red{color:var(--red)}
+  .links{display:flex;gap:22px;align-items:center}
+  .links a{text-decoration:none;color:var(--fg);font-weight:500;font-size:14px;letter-spacing:0.04em;opacity:.85}
+  .links a:hover, .links a.active{opacity:1;color:var(--red)}
+  .nav-actions{display:flex;align-items:center;gap:10px}
+  .icon-btn{background:transparent;border:1px solid var(--line);color:var(--fg);width:38px;height:38px;cursor:pointer;font-size:18px}
+  .hamburger{display:none;background:transparent;border:1px solid var(--line);color:var(--fg);width:38px;height:38px;cursor:pointer;font-size:22px;line-height:1}
+  .mobile-menu{display:none;flex-direction:column;gap:10px;padding:14px 24px 22px;border-top:1px solid var(--line)}
+  .mobile-menu a{color:var(--fg);text-decoration:none;font-weight:600;padding:8px 0}
+
+  /* TICKER */
+  .ticker{background:var(--red);color:#fff;overflow:hidden;border-bottom:1px solid #000}
+  .ticker-track{display:flex;gap:36px;padding:9px 0;white-space:nowrap;animation:ticker 38s linear infinite;font-family:'Bebas Neue',sans-serif;letter-spacing:0.22em;font-size:13px}
+  @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* PAGE HEAD */
+  .pagehead{padding:80px 0 36px;border-bottom:1px solid var(--line)}
+  .pagehead .display{font-size:clamp(56px,9vw,128px);margin:14px 0 18px}
+  .pagehead .lede{max-width:780px;color:var(--muted);font-size:18px;line-height:1.55}
+  .rule{height:6px;background:var(--red);width:120px}
+
+  /* REPRESENTED ORG (Te Pa hero card) */
+  .represented{padding:64px 0 28px}
+  .rep-card{display:grid;grid-template-columns:1.1fr 1fr;gap:0;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--card-fg);transition:transform .15s ease,border-color .15s ease}
+  .rep-card:hover{transform:translateY(-2px);border-color:var(--red)}
+  .rep-art{aspect-ratio:16/9;background:#000;overflow:hidden}
+  .rep-art svg{width:100%;height:100%;display:block}
+  .rep-body{padding:40px 44px;display:flex;flex-direction:column;justify-content:center}
+  .rep-body .tag{font-family:'Bebas Neue',sans-serif;letter-spacing:0.22em;font-size:13px;color:var(--red)}
+  .rep-body h2{font-family:'Bebas Neue',sans-serif;font-size:54px;line-height:1.02;margin:12px 0 14px;letter-spacing:0.02em}
+  .rep-body p{font-size:16px;line-height:1.65;color:var(--muted);margin:0 0 18px;max-width:50ch}
+  .rep-body .meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+  .rep-body .chip{font-family:'Bebas Neue',sans-serif;letter-spacing:0.18em;font-size:11px;padding:5px 10px;border:1px solid var(--line);color:var(--fg)}
+  .rep-body .arrow{font-family:'Bebas Neue',sans-serif;letter-spacing:0.24em;font-size:15px;color:var(--fg);border-top:2px solid var(--red);padding-top:12px;display:inline-block;align-self:flex-start}
+  .rep-card:hover .arrow{color:var(--red)}
+
+  /* SECTION */
+  section.partners{padding:48px 0 72px;border-top:1px solid var(--line)}
+  .section-head{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:end;margin-bottom:34px}
+  .section-head h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);margin:8px 0 0;line-height:1}
+  .section-head .right{color:var(--muted);max-width:50ch;justify-self:end;font-size:15px;line-height:1.55}
+
+  /* PARTNER GRID */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .partner{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);padding:22px 22px 20px;text-decoration:none;color:var(--card-fg);transition:transform .15s ease,border-color .15s ease}
+  .partner:hover{transform:translateY(-2px);border-color:var(--red)}
+  .partner .tag{font-family:'Bebas Neue',sans-serif;letter-spacing:0.22em;font-size:11px;color:var(--red)}
+  .partner h3{font-family:'Bebas Neue',sans-serif;font-size:26px;line-height:1.05;margin:10px 0 8px;letter-spacing:0.02em}
+  .partner p{font-size:14.5px;line-height:1.55;color:var(--muted);margin:0 0 16px;flex:1}
+  .partner .domain{font-family:'Bebas Neue',sans-serif;letter-spacing:0.18em;font-size:12px;color:var(--fg);border-top:1px solid var(--line);padding-top:12px;display:flex;justify-content:space-between;align-items:center}
+  .partner .domain .arrow{color:var(--red)}
+  .partner .status{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3fa34d;margin-right:8px;vertical-align:middle}
+  .partner .status.warn{background:#d7261e}
+
+  /* CTA STRIP */
+  .cta-strip{background:var(--red);color:#fff;padding:36px 24px;display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;margin-top:48px}
+  .cta-strip h3{font-family:'Bebas Neue',sans-serif;font-size:30px;margin:0;letter-spacing:0.02em}
+  .cta-strip p{margin:6px 0 0;font-size:15px;opacity:.92}
+  .cta-strip .btn{background:#fff;color:var(--red);border-color:#fff}
+  .cta-strip .btn:hover{background:transparent;color:#fff;border-color:#fff}
+
+  /* FOOTER */
+  footer.site{border-top:1px solid var(--line);padding:36px 0 60px;background:var(--bg-2)}
+  .foot{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px}
+  .foot .col h4{font-family:'Bebas Neue',sans-serif;letter-spacing:0.22em;color:var(--red);font-size:13px;margin:0 0 12px}
+  .foot a{color:var(--muted);text-decoration:none;font-size:14px;display:block;padding:4px 0}
+  .foot a:hover{color:var(--fg)}
+  .copy{margin-top:24px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+
+  @media (max-width: 1000px){
+    .links{display:none}
+    .hamburger{display:inline-flex;align-items:center;justify-content:center}
+    .mobile-menu.open{display:flex}
+    .rep-card{grid-template-columns:1fr}
+    .rep-body{padding:28px 26px 32px}
+    .rep-body h2{font-size:38px}
+    .grid{grid-template-columns:1fr 1fr}
+    .section-head{grid-template-columns:1fr}
+    .section-head .right{justify-self:start}
+    .foot{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width: 620px){
+    .grid{grid-template-columns:1fr}
+    .foot{grid-template-columns:1fr}
+  }
+
+  .reveal{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="index.html" aria-label="Kiwi Dialectic home">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <rect width="200" height="200" fill="#0a0a0a"/>
+        <path fill="#d7261e" d="M100 22 c 42 0 70 32 70 72 c 0 38 -28 64 -62 64 c -32 0 -54 -22 -54 -50 c 0 -26 20 -44 44 -44 c 22 0 36 14 36 32 c 0 16 -12 26 -26 26 c -12 0 -20 -8 -20 -18 c 0 -8 6 -14 14 -14 c 6 0 10 4 10 9 L 112 105 c 0 -10 -8 -16 -18 -16 c -14 0 -24 10 -24 24 c 0 18 14 30 32 30 c 22 0 38 -16 38 -38 c 0 -26 -20 -44 -46 -44 c -30 0 -52 22 -52 52 c 0 32 24 56 58 56 c 38 0 66 -28 66 -66 c 0 -44 -32 -76 -76 -76 c -10 0 -18 1 -26 3 L 100 22 Z"/>
+      </svg>
+      <span class="name"><span class="red">KD</span> · KIWI DIALECTIC</span>
+    </a>
+
+    <nav class="links" aria-label="Primary">
+      <a href="index.html#manifesto">Manifesto</a>
+      <a href="index.html#modules">Modules</a>
+      <a href="index.html#thinkers">Thinkers</a>
+      <a href="index.html#pillars">Pillars</a>
+      <a href="index.html#tools">Tools</a>
+      <a href="index.html#kit">Social Kit</a>
+      <a href="partners.html" class="active">Partners</a>
+      <a href="index.html#about">About</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle light or dark mode" title="Toggle theme">◐</button>
+      <a class="btn" href="https://kiwidialectic.com/subscribe" target="_blank" rel="noopener">Subscribe</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">≡</button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html#manifesto">Manifesto</a>
+    <a href="index.html#modules">Modules</a>
+    <a href="index.html#thinkers">Thinkers</a>
+    <a href="index.html#pillars">Pillars</a>
+    <a href="index.html#tools">Tools</a>
+    <a href="index.html#kit">Social Kit</a>
+    <a href="partners.html" class="active">Partners</a>
+    <a href="index.html#about">About</a>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>WHANAUNGATANGA</span><span>·</span>
+    <span>KAITIAKITANGA</span><span>·</span>
+    <span>INDIGENOUS DATA SOVEREIGNTY</span><span>·</span>
+    <span>TE TIRITI O WAITANGI</span><span>·</span>
+    <span>CARE · OCAP</span><span>·</span>
+    <span>MĀTAURANGA</span><span>·</span>
+    <span>WHANAUNGATANGA</span><span>·</span>
+    <span>KAITIAKITANGA</span><span>·</span>
+    <span>INDIGENOUS DATA SOVEREIGNTY</span><span>·</span>
+    <span>TE TIRITI O WAITANGI</span><span>·</span>
+    <span>CARE · OCAP</span><span>·</span>
+    <span>MĀTAURANGA</span><span>·</span>
+  </div>
+</div>
+
+<!-- PAGE HEAD -->
+<main>
+<section class="pagehead">
+  <div class="wrap reveal">
+    <div class="kicker">Whanaungatanga · Kaupapa · Aotearoa &amp; Beyond</div>
+    <h1 class="display">Partners &amp; Kaupapa</h1>
+    <div class="rule"></div>
+    <p class="lede" style="margin-top:20px">The Kiwi Dialectic doesn't walk alone. Below is the org we represent and the indigenous AI educators, pedagogy circles, and art &amp; writing kaupapa whose mahi we read, share, and stand alongside. Every link is live as of the last check.</p>
+  </div>
+</section>
+
+<!-- REPRESENTED ORG: TE PA -->
+<section class="represented">
+  <div class="wrap">
+    <div class="kicker reveal" style="margin-bottom:14px">The Org We Represent</div>
+    <a class="rep-card reveal" href="https://te-pa.org/" target="_blank" rel="noopener">
+      <div class="rep-art" aria-hidden="true">
+        <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice">
+          <rect width="640" height="360" fill="#0a0a0a"/>
+          <polygon points="0,0 420,0 200,360 0,360" fill="#d7261e"/>
+          <g stroke="#fff" stroke-width="9" fill="none">
+            <path d="M 470 250 C 470 180, 410 130, 350 130 C 290 130, 250 170, 250 215 C 250 255, 285 285, 320 285 C 350 285, 372 264, 372 238 C 372 215, 354 198, 332 198 C 314 198, 302 210, 302 226"/>
+          </g>
+          <text x="470" y="305" font-family="Bebas Neue,Impact" font-size="44" fill="#fff" text-anchor="middle" letter-spacing="6">TE PĀ</text>
+          <rect x="0" y="340" width="640" height="20" fill="#f5f5f5"/>
+        </svg>
+      </div>
+      <div class="rep-body">
+        <div class="tag">Charitable Trust · Ōtepoti Dunedin</div>
+        <h2>Te Pā</h2>
+        <p>An incorporated society and charitable trust for indigenous AI and data sovereignty education. Grounded in Te Tiriti o Waitangi, tikanga Māori, and mātauranga Māori; aligned with CARE and OCAP. The Kiwi Dialectic's parent kaupapa — home of the rhizome mapper and the consent-led publishing protocol for indigenous languages.</p>
+        <div class="meta">
+          <span class="chip">CARE</span>
+          <span class="chip">OCAP</span>
+          <span class="chip">Maiam nayri Wingara</span>
+          <span class="chip">Te Tiriti-led</span>
+        </div>
+        <div class="arrow">Visit te-pa.org →</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- INDIGENOUS AI EDUCATORS -->
+<section class="partners" id="ai-educators">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">01 · Partner Kaupapa</div>
+        <h2>Indigenous AI Educators</h2>
+      </div>
+      <p class="right">Kaupapa Māori and indigenous-led organisations putting tikanga, sovereignty, and community values at the centre of AI design and pedagogy.</p>
+    </div>
+
+    <div class="grid">
+
+      <a class="partner reveal" href="https://www.maorilab.maori.nz/" target="_blank" rel="noopener">
+        <div class="tag">Kaupapa Māori · Aotearoa</div>
+        <h3>Māori Lab</h3>
+        <p>Cultural intelligence for emerging tech. Runs AI hakathons with tamariki Māori, co-designing tikanga-led AI education with kura and hāpori.</p>
+        <div class="domain"><span><span class="status"></span>maorilab.maori.nz</span><span class="arrow">→</span></div>
+      </a>
+
+      <a class="partner reveal" href="https://www.taiuru.co.nz/kaupapa-maori-ai-framework/" target="_blank" rel="noopener">
+        <div class="tag">Framework · Aotearoa</div>
+        <h3>Dr Karaitiana Taiuru</h3>
+        <p>Released what is described as the world's first Indigenous Peoples AI Framework. Long-standing leadership on Māori data sovereignty and ethics.</p>
+        <div class="domain"><span><span class="status"></span>taiuru.co.nz</span><span class="arrow">→</span></div>
+      </a>
+
+      <a class="partner reveal" href="https://www.ahotahi.com/" target="_blank" rel="noopener">
+        <div class="tag">Tikanga-aligned AI · Aotearoa</div>
+        <h3>Ahotahi</h3>
+        <p>Strategic unity: AI partnered with iwi, hapū, and businesses to co-design systems reflecting whakapapa, manaakitanga, kaitiakitanga, rangatiratanga.</p>
+        <div class="domain"><span><span class="status"></span>ahotahi.com</span><span class="arrow">→</span></div>
+      </a>
+
+      <a class="partner reveal" href="https://thisisgraeme.me/wipce2025-kaitiaki/" target="_blank" rel="noopener">
+        <div class="tag">Iwi-led AI · Waikato</div>
+        <h3>Kaitiaki in the Digital Age</h3>
+        <p>Graeme Smith and Conny Huaki's mahi on Māori-led AI tools — including a custom Kaitiaki o Ngāti Mahuta GPT for environmental policy.</p>
+        <div class="domain"><span><span class="status"></span>thisisgraeme.me</span><span class="arrow">→</span></div>
+      </a>
+
+      <a class="partner reveal" href="https://www.indigenous-ai.net/" target="_blank" rel="noopener">
+        <div class="tag">Global Network</div>
+        <h3>Indigenous AI</h3>
+        <p>International collective working on indigenous protocols for artificial intelligence. Position papers, frameworks, and cross-nation conversations.</p>
+        <div class="domain"><span><span class="status"></span>indigenous-ai.net</span><span class="arrow">→</span></div>
+      </a>
+
+      <a class="partner reveal" href="https://www.abtec.org/" target="_blank" rel="noopener">
+        <div class="tag">Research · Turtle Island</div>
+        <h3>Aboriginal Territories in Cyberspace</h3>
+        <p>Indigenous-led network exploring digital sovereignty, AI, and new media art from Turtle Island. Long-time collaborators on indigenous protocols for AI.</p>
+        <div class="domain"><span><span class="status"></span>abtec.org</span><span class="arrow">→</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PEDAGOGY CIRCLES -->
+<section class="partners" id="pedagogy">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">02 · Partner Kaupapa</div>
+        <h2>Pedagogy Circles</h2>
+      </div>
+      <p class="right">Kaupapa Māori and indigenous education organisations whose pedagogy shapes how we teach AI literacy — ako, whānau, problem-posing, and tikanga-grounded.</p>
+    </div>
+
+    <div class="grid">
+
+      <a class="partner reveal" href="https://www.kaupapamaori.com/" target="_blank" rel="noopener">
+        <div class="tag">Knowledge Base · Aotearoa</div>
+        <h3>KaupapaMāori.com</h3>
+        <p>The reference site for kaupapa Māori research, theory, and practice. Cited in academic and community work across Aotearoa.</p>
+        <div class="domain"><span><span class="status"></span>kaupapamaori.com</span><span class="arrow">→</span></div>
+      </a>
+
+      <a class="partner reveal" href="https://tearakihawaiki.squarespace.com/" target="_blank" rel="noopener">
+        <div class="tag">Education Consultancy · Aotearoa</div>
+        <h3>Te Ara Ki Hawaiki</h3>
+        <p>Kaupapa-first education consultancy working with kura, principals, SLTs, and iwi to centre identity, language, culture, and whakapapa in schools.</p>
+        <div class="domain"><span><span class="status"></span>tearakihawaiki.squarespace.com</span><span class="arrow">→</span></div>
+      </a>
+
+      <a class="partner reveal" href="https://ako.aiforgood.org.nz/" target="_blank" rel="noopener">
+        <div class="tag">Tertiary AI · Aotearoa</div>
+        <h3>Ako · AI for Good NZ</h3>
+        <p>Open kaupapa Māori deep-dive resources for tertiary educators integrating AI into teaching. Free, well-maintained, te Tiriti-aligned.</p>
+        <div class="domain"><span><span class="status"></span>ako.aiforgood.org.nz</span><span class="arrow">→</span></div>
+      </a>
+
+      <a class="partner reveal" href="https://toitangata.co.nz/" target="_blank" rel="noopener">
+        <div class="tag">Hauora · Aotearoa</div>
+        <h3>Toi Tangata</h3>
+        <p>Māori physical activity, nutrition, and hauora through a kaupapa Māori lens. Long-running model for community-grounded indigenous education.</p>
+        <div class="domain"><span><span class="status"></span>toitangata.co.nz</span><span class="arrow">→</span></div>
+      </a>
+
+      <a class="partner reveal" href="https://www.aila.org.au/" target="_blank" rel="noopener">
+        <div class="tag">First Languages · Australia</div>
+        <h3>Australian Indigenous Languages Institute</h3>
+        <p>Peak body for indigenous language revitalisation across Australia. A close kin kaupapa for any AI / language project that respects consent-led protocols.</p>
+        <div class="domain"><span><span class="status"></span>aila.org.au</span><span class="arrow">→</span></div>
+      </a>
+
+      <a class="partner reveal" href="https://www.nzcer.org.nz/" target="_blank" rel="noopener">
+        <div class="tag">Research · Aotearoa</div>
+        <h3>NZ Council for Educational Research</h3>
+        <p>Independent research org committed to Te Tiriti. Publishes some of the most cited Aotearoa work on AI in primary and tertiary classrooms.</p>
+        <div class="domain"><span><span class="status"></span>nzcer.org.nz</span><span class="arrow">→</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ART & WRITING CIRCLES -->
+<section class="partners" id="art-writing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">03 · Partner Kaupapa</div>
+        <h2>Art &amp; Writing Circles</h2>
+      </div>
+      <p class="right">Indigenous and grassroots arts, media, and writing kaupapa — because AI literacy without a literary, visual, and political imagination is just compliance.</p>
+    </div>
+
+    <div class="grid">
+
+      <a class="partner reveal" href="https://www.firstnationsmedia.org.au/" target="_blank" rel="noopener">
+        <div class="tag">Media · Australia</div>
+        <h3>First Nations Media Australia</h3>
+        <p>Peak body for First Nations broadcasting, media, and communications. Models what indigenous-controlled media infrastructure looks like.</p>
+        <div class="domain"><span><span class="status"></span>firstnationsmedia.org.au</span><span class="arrow">→</span></div>
+      </a>
+
+      <a class="partner reveal" href="https://nativebio.org/" target="_blank" rel="noopener">
+        <div class="tag">Storytelling · Turtle Island</div>
+        <h3>Native Bio</h3>
+        <p>Indigenous-led organisation centring Native voices in story, science, and public narrative. Long view on cultural sovereignty in media.</p>
+        <div class="domain"><span><span class="status"></span>nativebio.org</span><span class="arrow">→</span></div>
+      </a>
+
+      <a class="partner reveal" href="https://www.creativenz.govt.nz/" target="_blank" rel="noopener">
+        <div class="tag">Arts Funder · Aotearoa</div>
+        <h3>Creative New Zealand</h3>
+        <p>Kahui Toi Māori panel and dedicated Māori arts strategy. Practical funder of Māori and Pasifika writers, artists, and publishers.</p>
+        <div class="domain"><span><span class="status"></span>creativenz.govt.nz</span><span class="arrow">→</span></div>
+      </a>
+
+    </div>
+
+    <div class="cta-strip reveal">
+      <div>
+        <h3>Know a kaupapa we should add?</h3>
+        <p>If you run an indigenous AI, pedagogy, or arts circle and want to be listed — or you spot a broken link — send a kōrero.</p>
+      </div>
+      <a class="btn" href="mailto:hello@te-pa.org">Get in touch →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="wrap foot">
+    <div class="col">
+      <h4>The Kiwi Dialectic</h4>
+      <p style="color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 10px">A working-class publication from Ōtepoti Dunedin. Train the mind. Arm the class.</p>
+      <a href="https://kiwidialectic.com" target="_blank" rel="noopener">kiwidialectic.com →</a>
+      <a href="https://te-pa.org" target="_blank" rel="noopener">te-pa.org →</a>
+    </div>
+    <div class="col">
+      <h4>Course</h4>
+      <a href="index.html#manifesto">Manifesto</a>
+      <a href="index.html#modules">Modules</a>
+      <a href="index.html#thinkers">Thinkers</a>
+      <a href="index.html#kit">Social Kit</a>
+    </div>
+    <div class="col">
+      <h4>Partners</h4>
+      <a href="#ai-educators">Indigenous AI Educators</a>
+      <a href="#pedagogy">Pedagogy Circles</a>
+      <a href="#art-writing">Art &amp; Writing Circles</a>
+    </div>
+  </div>
+  <div class="wrap"><div class="copy">© The Kiwi Dialectic · Te Pā. All works free to read; all kaupapa free to walk with.</div></div>
+</footer>
+
+<script>
+  // theme toggle
+  const t = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  const saved = localStorage.getItem('kd-theme');
+  if(saved){ root.setAttribute('data-theme', saved); }
+  t && t.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('kd-theme', next);
+  });
+  // mobile menu
+  const h = document.getElementById('hamburger');
+  const mm = document.getElementById('mobile-menu');
+  h && h.addEventListener('click', () => {
+    const open = mm.classList.toggle('open');
+    h.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  // reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
