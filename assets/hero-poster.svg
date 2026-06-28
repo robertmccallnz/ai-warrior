@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="AI Warrior constructivist poster">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0a0a"/>
+      <stop offset="1" stop-color="#1a0606"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect width="800" height="1000" fill="url(#grid)"/>
+
+  <!-- giant red wedge -->
+  <polygon points="0,0 520,0 280,1000 0,1000" fill="#d7261e"/>
+  <!-- diagonal black slash -->
+  <polygon points="500,0 800,0 800,260 360,1000 80,1000" fill="#0a0a0a" opacity="0.85"/>
+
+  <!-- circle motif -->
+  <circle cx="560" cy="280" r="150" fill="none" stroke="#ffffff" stroke-width="6"/>
+  <circle cx="560" cy="280" r="80" fill="#ffffff"/>
+  <circle cx="560" cy="280" r="80" fill="#d7261e" opacity="0.0"/>
+  <text x="560" y="298" font-family="Impact, 'Bebas Neue', sans-serif" font-size="64" fill="#0a0a0a" text-anchor="middle" font-weight="900">AI</text>
+
+  <!-- worker silhouette (abstract) -->
+  <g fill="#0a0a0a">
+    <polygon points="200,520 340,500 360,560 320,580 320,820 260,820 260,620 220,620 220,820 160,820 160,560"/>
+    <circle cx="270" cy="470" r="44"/>
+    <polygon points="300,540 480,490 500,520 320,580"/>
+  </g>
+  <!-- raised tool: stylised pen/sickle -->
+  <path d="M470 480 L640 380 L660 410 L490 510 Z" fill="#ffffff"/>
+  <path d="M640 380 q60 -10 60 50 q0 50 -60 50" fill="none" stroke="#ffffff" stroke-width="10"/>
+
+  <!-- big text -->
+  <text x="60" y="900" font-family="Impact, 'Bebas Neue', sans-serif" font-size="110" fill="#ffffff" font-weight="900" letter-spacing="2">AI WARRIOR</text>
+  <text x="60" y="950" font-family="'Work Sans', system-ui, sans-serif" font-size="22" fill="#ffffff" letter-spacing="6">TRAIN THE MIND · ARM THE CLASS</text>
+</svg>
