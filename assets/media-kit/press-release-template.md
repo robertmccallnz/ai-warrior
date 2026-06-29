@@ -6,7 +6,7 @@
 
 {NAME} joins a growing cohort of AI Warriors who have worked through the six modules: *See the Frame*, *Build with Purpose*, *Emotional Sovereignty*, *Advocate by Creating*, *Systems Thinking*, and *Arm the Class*. {NAME} intends to apply this praxis to [DESCRIBE INTENDED APPLICATION — e.g. community organising / workplace advocacy / digital education in their context]. "QUOTE FROM {NAME}," said {NAME}.
 
-*AI Warrior* is a free, open-access course: free to read, free to share, free to walk with. It is produced by The Kiwi Dialectic in partnership with Te Pā — a charitable trust for indigenous AI and data sovereignty education based in Aotearoa. The course and all materials are available at <https://robertmccallnz.github.io/ai-warrior/>. Te Pā's work can be followed at <https://te-pa.org/>.
+*AI Warrior* is a free, open-access course: free to read, free to share, free to walk with. It is produced by The Kiwi Dialectic in partnership with Te Pā — an open educational kaupapa for indigenous AI and data sovereignty education based in Aotearoa. A charitable trust is being established — expressions of interest open for founding board / kaitiaki seats. The course and all materials are available at <https://robertmccallnz.github.io/ai-warrior/>. Te Pā's work can be followed at <https://te-pa.org/>.
 
 ---
 
@@ -16,4 +16,4 @@
 
 ## About Te Pā
 
-Te Pā is a charitable trust dedicated to indigenous AI and data sovereignty education in Aotearoa New Zealand and the wider Pacific. Te Pā works alongside communities, schools, and organisations to ensure that AI literacy is accessible, grounded in te Tiriti o Waitangi, and built on working-class and indigenous epistemologies rather than corporate capture.
+Te Pā is an open educational kaupapa dedicated to indigenous AI and data sovereignty education in Aotearoa New Zealand and the wider Pacific. A charitable trust is being established — expressions of interest open for founding board / kaitiaki seats. Te Pā works alongside communities, schools, and organisations to ensure that AI literacy is accessible, grounded in te Tiriti o Waitangi, and built on working-class and indigenous epistemologies rather than corporate capture.
