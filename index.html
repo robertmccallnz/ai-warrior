@@ -133,6 +133,9 @@
   .thinker .years{color:var(--muted);font-size:12px;margin-top:4px}
   .thinker:hover .years{color:#fff}
   .thinker .quote{font-size:13px;line-height:1.5;margin-top:10px}
+  .thinker[data-pending="true"]{position:relative}
+  .thinker[data-pending="true"]::after{content:"COMING SOON";position:absolute;top:10px;right:10px;font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:10px;background:var(--red);color:#fff;padding:3px 8px;border-radius:2px}
+  .thinker[data-pending="true"]:hover::after{background:#fff;color:var(--red)}
 
   /* PILLARS + PRICING */
   .pillars-wrap{display:grid;grid-template-columns:1.2fr 0.8fr;gap:36px;align-items:start}
@@ -407,27 +410,27 @@
     </div>
 
     <div class="thinkers">
-      <a class="thinker reveal" href="https://kiwidialectic.com/p/ai-warrior-01-see-the-frame" target="_blank" rel="noopener">
-        <div class="name">Gramsci</div><div class="years">1891 – 1937</div>
+      <a class="thinker reveal" href="https://www.kiwidialectic.com/p/gramsci-for-aotearoa-lesson-1-who" target="_blank" rel="noopener">
+        <div class="name">Gramsci</div><div class="years">1891 – 1937 · Course 1</div>
         <div class="quote">"The crisis consists precisely in the fact that the old is dying and the new cannot be born."</div>
       </a>
-      <a class="thinker reveal" href="https://kiwidialectic.com/p/ai-warrior-02-build-with-purpose" target="_blank" rel="noopener">
-        <div class="name">Kropotkin</div><div class="years">1842 – 1921</div>
+      <a class="thinker reveal" href="https://www.kiwidialectic.com/p/lesson-1-who-was-kropotkin-and-what" target="_blank" rel="noopener">
+        <div class="name">Kropotkin</div><div class="years">1842 – 1921 · Course 2</div>
         <div class="quote">"Mutual aid is a factor of evolution."</div>
       </a>
-      <a class="thinker reveal" href="https://kiwidialectic.com/p/ai-warrior-03-emotional-sovereignty" target="_blank" rel="noopener">
-        <div class="name">Graeber</div><div class="years">1961 – 2020</div>
+      <a class="thinker reveal" href="https://www.kiwidialectic.com/p/graeber-lesson-1-who-was-graeber" target="_blank" rel="noopener">
+        <div class="name">Graeber</div><div class="years">1961 – 2020 · Course 3</div>
         <div class="quote">"The ultimate hidden truth of the world is that it is something we make."</div>
       </a>
-      <a class="thinker reveal" href="https://kiwidialectic.com/p/ai-warrior-04-advocate-by-creating" target="_blank" rel="noopener">
-        <div class="name">Freire</div><div class="years">1921 – 1997</div>
+      <a class="thinker reveal" href="https://www.kiwidialectic.com/s/courses" target="_blank" rel="noopener" data-pending="true" aria-label="Freire — Course 4, coming soon. Visit the courses index in the meantime.">
+        <div class="name">Freire</div><div class="years">1921 – 1997 · Course 4</div>
         <div class="quote">"Education either functions to conform or to liberate."</div>
       </a>
-      <a class="thinker reveal" href="https://kiwidialectic.com/p/ai-warrior-05-systems-thinking" target="_blank" rel="noopener">
-        <div class="name">Deleuze</div><div class="years">1925 – 1995</div>
+      <a class="thinker reveal" href="https://www.kiwidialectic.com/p/gilles-deleuze-for-educators-artists" target="_blank" rel="noopener">
+        <div class="name">Deleuze</div><div class="years">1925 – 1995 · Course 5</div>
         <div class="quote">"There is no need to fear or hope, but only to look for new weapons."</div>
       </a>
-      <a class="thinker reveal" href="https://www.kiwidialectic.com/p/bakunin-mo-aotearoa-course-launch" target="_blank" rel="noopener" aria-label="Bakunin — Tangi o te Tāheke, the final course in the AI Warrior thinkers series">
+      <a class="thinker reveal" href="https://www.kiwidialectic.com/p/bakunin-mo-aotearoa-lesson-1-ko-wai" target="_blank" rel="noopener" data-pending="true" aria-label="Bakunin — Tangi o te Tāheke, Course 6, coming July 2026">
         <div class="name">Bakunin</div><div class="years">1814 – 1876 · Course 6 · Tangi o te Tāheke</div>
         <div class="quote">"The passion for destruction is also a creative passion."</div>
       </a>
