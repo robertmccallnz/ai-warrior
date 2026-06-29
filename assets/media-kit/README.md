@@ -47,25 +47,25 @@ or any heavy condensed sans-serif. All-caps, ivory (#F2EED4) or near-white.
 > I trained the mind. Now I arm the class.
 > AI Warrior · graduate of The Kiwi Dialectic
 > Six modules. Six thinkers. One praxis.
-> Free course: https://robertmccallnz.github.io/ai-warrior/
+> Free course: https://aiwarrior.nz/
 
 ### Te reo Māori
 > Kua whakangungua e au tōku hinengaro. Ināianei, ka whakangaihia e au te iwi.
 > Toa AI · tauira whakaoti o Te Kōrero Kiwi
 > E ono ngā wāhanga. E ono ngā mātanga. Kotahi te tikanga whakatinana.
-> https://robertmccallnz.github.io/ai-warrior/
+> https://aiwarrior.nz/
 
 ### Tagalog
 > Sinanay ko ang isip. Ngayon, aarmasan ko ang uri.
 > Mandirigma ng AI · nagtapos sa The Kiwi Dialectic
 > Anim na modyul. Anim na nag-isip. Isang praksis.
-> https://robertmccallnz.github.io/ai-warrior/
+> https://aiwarrior.nz/
 
 ---
 
 ## Links
 
-- Course: <https://robertmccallnz.github.io/ai-warrior/>
+- Course: <https://aiwarrior.nz/>
 - Te Pā: <https://te-pa.org/>
 - Contact: hello@te-pa.org
 
