@@ -254,7 +254,7 @@ html[data-theme="light"] {
    AI Warrior — Hotere patch v0.2
    Extends v0.1 to: #manifesto, #pillars, footer.
    Strategy: additive only. All anchor IDs (#manifesto, #pillars,
-   #thinkers, #modules, #tools, #kit, #families, #media-kit, #about,
+   #thinkers, #modules, #tools, #kit, #media-kit, #about,
    #top) untouched. No markup. No link changes. Inherits the v0.1
    tokens (bone, gold, protest red, ink, hairline).
    ============================================================ */
@@ -610,8 +610,7 @@ footer::before {
 /* =============================================================
    HOTERE PATCH v0.3
    Coverage: #tools (numbered chapter rail) · #kit + #media-kit
-             (tiered kits, language bands) · #families (strip
-             inline whites, retune CC card, bone-on-ink discipline)
+             (tiered kits, language bands, gold double-ring)
    Additive only. Zero markup changes. Zero href/src changes.
    Append after v0.2 inside the inline <style> block, OR concat
    into assets/css/hotere-patch.css.
@@ -824,84 +823,3 @@ footer::before {
   color: var(--fg) !important;
 }
 
-/* -------------------------------------------------------------
-   4. #families — strip hardcoded #fff, run bone-on-ink properly
-   -------------------------------------------------------------
-   Inline style= attributes in this section hardcode pure white,
-   pure-red borders, and milky opacity:.85 text. We use [style]
-   attribute selectors + !important to beat inline declarations
-   without touching markup. This is the one section where the
-   author baked styling into HTML, so !important is justified.
-   ------------------------------------------------------------- */
-#families{
-  background: var(--bg) !important;
-  border-top: 1px solid var(--line) !important;
-  color: var(--fg) !important;
-}
-#families .kicker[style]{
-  color: var(--accent) !important;
-  opacity: 1 !important;
-}
-#families h2[style]{
-  color: var(--fg) !important;
-}
-#families .rule[style]{
-  background: var(--accent) !important;  /* was var(--red) */
-}
-#families .right[style]{
-  color: var(--muted) !important;
-  opacity: 1 !important;
-}
-/* The four normal tool cards in #families */
-#families .tool[style]{
-  background: var(--bg-2) !important;
-  border: 1px solid var(--line) !important;
-  color: var(--fg) !important;
-  transition: border-color .18s ease, transform .18s ease;
-}
-#families .tool[style]:hover{
-  border-color: rgba(201,150,43,0.35) !important;
-  transform: translateY(-2px);
-}
-#families .tool h4[style]{
-  color: var(--fg) !important;
-}
-#families .tool p[style]{
-  color: var(--muted) !important;
-  opacity: 1 !important;
-}
-/* The fifth (CC BY-SA) card had red border + red heading.
-   Retune to gold — CC BY-SA is metadata, not a CTA. */
-#families .tool[style*="--red"]{
-  border: 1px solid var(--accent) !important;
-}
-#families .tool h4[style*="--red"]{
-  color: var(--accent) !important;
-}
-/* The three buttons: Open the Course / Read the License / Fork on GitHub
-   First button uses default .btn (already gold-friendly from base).
-   The two outlined ones carry inline transparent bg + #fff border. */
-#families a.btn[style]{
-  background: transparent !important;
-  color: var(--fg) !important;
-  border: 1px solid var(--line) !important;
-  transition: background .18s ease, color .18s ease, border-color .18s ease;
-}
-#families a.btn[style]:hover{
-  background: var(--accent) !important;
-  color: var(--bg) !important;
-  border-color: var(--accent) !important;
-}
-/* Primary "Open the Course →" button — no inline style, uses base .btn.
-   Scope it so it doesn't compete with the outlined siblings. */
-#families a.btn:not([style]){
-  background: var(--fg);
-  color: var(--bg);
-  border: 1px solid var(--fg);
-  transition: background .18s ease, color .18s ease, border-color .18s ease;
-}
-#families a.btn:not([style]):hover{
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--bg);
-}
