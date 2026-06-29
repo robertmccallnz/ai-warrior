@@ -1,0 +1,907 @@
+/* ============================================================
+   AI Warrior — Hotere patch v0.1
+   Scope: hero + thinker (Substack lesson) cards only.
+   Strategy: retune existing CSS custom properties to the Hotere
+   palette, then add a small, scoped block that targets the hero
+   and .thinker classes. No markup changes. No link changes.
+   ============================================================ */
+
+:root {
+  /* Hotere token retune (dark theme) — overrides the original vars
+     at the top of the existing <style> block. Names kept identical
+     so every consumer of these vars (header, ticker, cards, modules,
+     buttons, footer) inherits the palette correctly. */
+  --bg:        #0A0A0A;  /* matte black field */
+  --bg-2:      #161616;  /* elevated surface (was #111) */
+  --fg:        #EDE6D6;  /* bone, not pure white (was #f5f5f5) */
+  --muted:     #8C8579;  /* warm dim (was #a3a3a3) */
+  --red:       #C8262A;  /* protest red (was #d7261e) */
+  --red-2:     #E04A2E;  /* hover red (was #ff2a1f) */
+  --line:      rgba(237,230,214,0.12);  /* bone-toned hairline */
+  --card:      #161616;  /* ink card surface */
+  --card-fg:   #EDE6D6;
+  --accent:    #C9962B;  /* OCHRE GOLD — replaces white accent */
+  --gold:      #C9962B;  /* explicit token for new rules */
+  --paper:     #F4EFE6;  /* inverted surface for future use */
+  /* --maxw and --radius left untouched */
+}
+
+/* Light theme retune — keep the same Hotere logic on paper. */
+html[data-theme="light"] {
+  --bg:        #F4EFE6;
+  --bg-2:      #FFFFFF;
+  --fg:        #0A0A0A;
+  --muted:     #4A453C;
+  --red:       #B11F22;
+  --red-2:     #C8262A;
+  --line:      rgba(10,10,10,0.12);
+  --card:      #FFFFFF;
+  --card-fg:   #0A0A0A;
+  --accent:    #8A6A1F;
+  --gold:      #8A6A1F;
+  --paper:     #F4EFE6;
+}
+
+/* ============================================================
+   HERO — Hotere treatment
+   ============================================================ */
+
+.hero {
+  /* Slow the red bleed; let gold do the work instead. */
+  padding: 96px 0 80px;
+}
+
+.hero::after {
+  /* Replace the red radial glow with a quieter gold corner wash. */
+  background: radial-gradient(closest-side, var(--gold) 0%, transparent 70%);
+  opacity: 0.10;
+  left: auto;
+  right: -10%;
+  bottom: -25%;
+  width: 55%;
+  height: 55%;
+}
+
+.hero .kicker {
+  /* Eyebrow goes ochre, not red — saves red for the CTA. */
+  color: var(--gold);
+  letter-spacing: 0.16em;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.hero h1.display {
+  /* Tighter rhythm, slightly larger ceiling on big screens. */
+  font-size: clamp(56px, 9.5vw, 152px);
+  line-height: 0.90;
+  margin: 16px 0 20px;
+}
+
+.hero h1.display .red {
+  /* Brand line stays red — but the new protest-red, not orange. */
+  color: var(--red);
+}
+
+.hero p.lede {
+  color: var(--fg);
+  max-width: 58ch;
+  font-size: 20px;
+  line-height: 1.55;
+  opacity: 0.86;
+}
+
+/* Add a 3px ochre rule under the lede — Hotere gold band signature.
+   Placed via ::before on .hero-cta so it sits between body and CTAs
+   without changing markup. */
+.hero-cta {
+  position: relative;
+  padding-top: 28px;
+  margin-top: 28px;
+  gap: 14px;
+}
+.hero-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 96px;
+  height: 3px;
+  background: var(--gold);
+}
+
+/* Re-style the primary CTA (Begin the Course) in protest red with bone text. */
+.hero-cta .btn:not(.ghost) {
+  background: var(--red);
+  color: var(--fg);
+  border-color: var(--red);
+  letter-spacing: 0.14em;
+  font-weight: 800;
+}
+.hero-cta .btn:not(.ghost):hover {
+  background: var(--fg);
+  color: var(--red);
+}
+
+/* Secondary CTA (Read the Dialectic) — ghost in bone, gold on hover. */
+.hero-cta .btn.ghost {
+  border-color: var(--fg);
+  color: var(--fg);
+}
+.hero-cta .btn.ghost:hover {
+  background: var(--gold);
+  color: #0A0A0A;
+  border-color: var(--gold);
+}
+
+/* ============================================================
+   THINKER CARDS — Substack lesson links
+   These are the six <a class="thinker"> elements pointing at
+   kiwidialectic.com/p/... The href values are NEVER touched.
+   ============================================================ */
+
+.thinkers {
+  /* A touch more breathing room between cards. */
+  gap: 18px;
+}
+
+.thinker {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 22px 22px 24px;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+  overflow: hidden;
+}
+
+/* Hotere gold corner mark — a small wedge in the top-right.
+   Pure CSS, no extra DOM. */
+.thinker::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  background: var(--gold);
+  clip-path: polygon(100% 0, 100% 100%, 0 0);
+  transition: width 0.18s ease, height 0.18s ease, background 0.18s ease;
+}
+
+.thinker:hover {
+  /* Replace the loud red-fill hover with a quieter ink lift
+     + a bone hairline + an extended gold wedge. */
+  background: #1C1C1C;
+  border-color: var(--gold);
+  color: var(--fg);
+  transform: translateY(-2px);
+}
+.thinker:hover::before {
+  width: 28px;
+  height: 28px;
+}
+
+.thinker .name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+}
+
+.thinker .years {
+  color: var(--gold);
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+.thinker:hover .years {
+  /* Originally turned white on red — now stays gold on ink. */
+  color: var(--gold);
+}
+
+.thinker .quote {
+  font-size: 14px;
+  line-height: 1.55;
+  margin-top: 14px;
+  color: var(--fg);
+  opacity: 0.82;
+}
+
+/* Coming-soon ribbon — keep behaviour, restyle to ochre on black
+   so it reads as part of the system, not a foreign sticker. */
+.thinker[data-pending="true"]::after {
+  background: var(--gold);
+  color: #0A0A0A;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  font-size: 10px;
+  padding: 4px 9px;
+  border-radius: 2px;
+  top: 14px;
+  right: 32px; /* sits left of the new corner wedge */
+}
+.thinker[data-pending="true"]:hover::after {
+  background: var(--gold);
+  color: #0A0A0A;
+}
+
+/* Visible focus ring for keyboard nav (accessibility, was missing). */
+.thinker:focus-visible,
+.hero-cta .btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Respect reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .thinker,
+  .thinker::before,
+  .hero-cta .btn {
+    transition: none;
+  }
+  .thinker:hover {
+    transform: none;
+  }
+}
+/* ============================================================
+   AI Warrior — Hotere patch v0.2
+   Extends v0.1 to: #manifesto, #pillars, footer.
+   Strategy: additive only. All anchor IDs (#manifesto, #pillars,
+   #thinkers, #modules, #tools, #kit, #families, #media-kit, #about,
+   #top) untouched. No markup. No link changes. Inherits the v0.1
+   tokens (bone, gold, protest red, ink, hairline).
+   ============================================================ */
+
+/* ----- Token additions used by v0.2 only ------------------- */
+:root {
+  --pillar-wedge:   #C9962B;        /* gold wedge for pillar left rule */
+  --footer-band:    rgba(201,150,43,0.18);  /* faint gold band above footer */
+}
+html[data-theme="light"] {
+  --pillar-wedge:   #8A6A1F;
+  --footer-band:    rgba(138,106,31,0.22);
+}
+
+/* ============================================================
+   MANIFESTO — #manifesto
+   Three numbered cards: "Against the Banking Model",
+   "Against Manufactured Consent", "For the Working Class".
+   ============================================================ */
+
+#manifesto {
+  /* Section opens with a faint gold rule above the heading to
+     echo the hero's gold band. ::before so no markup changes. */
+  position: relative;
+}
+#manifesto::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96px;
+  height: 3px;
+  background: var(--gold);
+  opacity: 0.9;
+}
+
+#manifesto .kicker {
+  color: var(--gold);
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  font-size: 13px;
+}
+
+#manifesto h2 {
+  color: var(--fg);
+  letter-spacing: 0.02em;
+}
+
+#manifesto .rule {
+  /* The little under-heading rule turns gold instead of red. */
+  background: var(--gold);
+  width: 80px;
+  height: 3px;
+}
+
+#manifesto .right {
+  color: var(--fg);
+  opacity: 0.86;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.manifesto-grid {
+  gap: 24px;
+}
+
+.manifesto-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 32px 28px 28px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.18s ease,
+    transform 0.18s ease,
+    background 0.18s ease;
+}
+
+/* Hotere gold corner wedge — matches .thinker treatment from v0.1
+   so the two card families read as one system. */
+.manifesto-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--gold);
+  clip-path: polygon(100% 0, 100% 100%, 0 0);
+  transition: width 0.18s ease, height 0.18s ease;
+}
+.manifesto-card:hover {
+  background: #1C1C1C;
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.manifesto-card:hover::before {
+  width: 32px;
+  height: 32px;
+}
+
+.manifesto-card .num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  /* Was red — now ochre, saving red for CTAs only. */
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.manifesto-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.04em;
+  font-size: 28px;
+  margin: 14px 0 10px;
+  color: var(--fg);
+}
+
+.manifesto-card p {
+  color: var(--fg);
+  opacity: 0.78;
+  font-size: 15.5px;
+  line-height: 1.62;
+  margin: 0;
+}
+
+/* ============================================================
+   PILLARS — #pillars
+   Five .pillar cards (one spans two columns) plus the .pricing
+   aside in the right column. CTA in the pricing card links to
+   https://kiwidialectic.com/subscribe — UNTOUCHED.
+   ============================================================ */
+
+#pillars .kicker {
+  color: var(--gold);
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  font-size: 13px;
+}
+
+#pillars h2 {
+  color: var(--fg);
+}
+
+#pillars .rule {
+  background: var(--gold);
+  width: 80px;
+  height: 3px;
+}
+
+#pillars .right {
+  color: var(--fg);
+  opacity: 0.86;
+}
+
+.pillar {
+  background: var(--card);
+  /* The 4px red left rule becomes a 4px gold wedge — Hotere band
+     translated to a vertical edge. */
+  border-left: 4px solid var(--pillar-wedge);
+  padding: 24px 22px;
+  position: relative;
+  transition: border-left-width 0.18s ease, background 0.18s ease;
+}
+.pillar:hover {
+  border-left-width: 8px;
+  background: #1C1C1C;
+}
+
+.pillar h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  margin: 0 0 8px;
+  letter-spacing: 0.03em;
+  color: var(--fg);
+}
+
+.pillar p {
+  color: var(--fg);
+  opacity: 0.78;
+  font-size: 15px;
+  line-height: 1.58;
+  margin: 0;
+}
+
+/* Pricing aside: the only place protest red is used at section
+   level — appropriate, this IS the call to action. Retune to the
+   patch palette so reds match (no more two-red mismatch). */
+.pricing {
+  background: var(--red);
+  color: var(--fg);
+  padding: 40px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.pricing::after {
+  /* The decorative ring goes from white to bone for warmth. */
+  border-color: var(--fg);
+  opacity: 0.16;
+}
+.pricing .kicker {
+  /* Eyebrow inside the red block: stays light, not gold (gold on
+     red fails contrast). */
+  color: var(--fg) !important;
+  opacity: 0.92;
+}
+.pricing .price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 96px;
+  line-height: 1;
+  color: var(--fg);
+}
+.pricing .price small {
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  opacity: 0.88;
+}
+.pricing ul {
+  padding-left: 18px;
+  line-height: 1.75;
+  font-size: 15.5px;
+  color: var(--fg);
+}
+
+/* Subscribe CTA: bone-on-red flips to ink-on-gold on hover —
+   keeps the Hotere palette consistent across button states. */
+.pricing a.btn {
+  background: var(--fg);
+  color: var(--red);
+  border-color: var(--fg);
+  letter-spacing: 0.14em;
+  font-weight: 800;
+  margin-top: 18px;
+}
+.pricing a.btn:hover {
+  background: var(--gold);
+  color: #0A0A0A;
+  border-color: var(--gold);
+}
+.pricing a.btn:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   FOOTER
+   Markup: <footer><div class="wrap foot">…</div></footer>
+   Contains links to Substack, Twitter/X, mailto. ALL hrefs
+   preserved.
+   ============================================================ */
+
+footer {
+  padding: 56px 0 48px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+  position: relative;
+}
+
+/* Faint gold band above the footer — a quiet tribute, not a banner. */
+footer::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--gold) 20%,
+    var(--gold) 80%,
+    transparent 100%
+  );
+  opacity: 0.55;
+}
+
+.foot {
+  color: var(--fg);
+  opacity: 0.92;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
+
+.foot a {
+  color: var(--fg);
+  text-decoration: none;
+  margin-left: 18px;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.foot a:hover {
+  /* Was red — now ochre gold, matches the rest of the patch. */
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+.foot a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.lockup {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--fg);
+}
+
+/* Recolour the embedded footer logo SVG: the inline path uses
+   fill="#d7261e" (legacy red). We can't change the fill from CSS
+   on a child of an SVG without selecting it directly, but we CAN
+   tint the SVG via a CSS filter applied at the wrapper level when
+   the original red is acceptably close to the new protest-red.
+   Since #d7261e and our #C8262A are visually adjacent, leave the
+   logo as-is — no markup change, no broken brand. */
+
+/* Tribute line — extend the footer with a Hotere attribution via
+   ::after on the .foot container. Generated content only, no
+   markup change, so no link inventory change. */
+.foot::after {
+  content: "Tribute to Ralph Hotere · Te Aupōuri · Te Rarawa · Ōtepoti";
+  display: block;
+  flex-basis: 100%;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+/* ============================================================
+   Reduced motion — extends v0.1's coverage to v0.2's components.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .manifesto-card,
+  .manifesto-card::before,
+  .pillar,
+  .foot a {
+    transition: none;
+  }
+  .manifesto-card:hover {
+    transform: none;
+  }
+}
+/* =============================================================
+   HOTERE PATCH v0.3
+   Coverage: #tools (numbered chapter rail) · #kit + #media-kit
+             (tiered kits, language bands) · #families (strip
+             inline whites, retune CC card, bone-on-ink discipline)
+   Additive only. Zero markup changes. Zero href/src changes.
+   Append after v0.2 inside the inline <style> block, OR concat
+   into assets/css/hotere-patch.css.
+   Palette tokens already declared in v0.1 :root.
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   0. Global kicker + rule default flip (red → ochre gold)
+   -------------------------------------------------------------
+   Base stylesheet sets .kicker and .rule to var(--red). Per the
+   Hotere design system, red is reserved for CTAs only; ochre is
+   the workhorse accent. Flip the defaults here. Any kicker with
+   an inline color override (e.g. style="color:var(--red)") is
+   handled section-by-section below.
+   ------------------------------------------------------------- */
+.kicker{ color: var(--accent); }
+.rule{ background: var(--accent); }
+
+/* -------------------------------------------------------------
+   1. #tools — numbered chapter rail
+   -------------------------------------------------------------
+   Five tools become a numbered, gold-railed curriculum strip.
+   Counter is scoped to #tools .tools so it never leaks into
+   other .tool-style elements elsewhere.
+   ------------------------------------------------------------- */
+#tools .tools{
+  counter-reset: tool;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  margin-top: 28px;
+}
+#tools .tool{
+  counter-increment: tool;
+  position: relative;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent);
+  padding: 44px 20px 22px;
+  transition: border-top-width .18s ease, transform .18s ease, border-color .18s ease;
+}
+#tools .tool::before{
+  content: counter(tool, decimal-leading-zero);
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: .08em;
+  color: var(--accent);
+  line-height: 1;
+}
+#tools .tool h4{
+  color: var(--fg);
+  margin: 0 0 8px;
+  letter-spacing: .02em;
+}
+#tools .tool h4::after{
+  content: "";
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+  margin-top: 8px;
+  opacity: .85;
+}
+#tools .tool p{
+  color: var(--muted);
+  margin: 0;
+}
+#tools .tool:hover{
+  border-top-width: 4px;
+  border-color: rgba(201,150,43,0.35);
+  transform: translateY(-2px);
+}
+@media (max-width: 960px){
+  #tools .tools{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px){
+  #tools .tools{ grid-template-columns: 1fr; }
+}
+
+/* -------------------------------------------------------------
+   2. #kit (basic social kit) — bone-on-ink, gold hairline
+   -------------------------------------------------------------
+   Strip the red kicker (red is CTA-only), give the kit-bar a
+   single gold underline, unify caption rhythm with #media-kit.
+   ------------------------------------------------------------- */
+#kit .kit-bar{
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-bottom: 1px solid var(--accent);
+  color: var(--fg);
+  position: relative;
+}
+#kit .kit-bar .kicker[style]{
+  /* beats the inline color:var(--red) the original markup carries */
+  color: var(--accent) !important;
+}
+#kit .kit-bar h3[style]{
+  color: var(--fg) !important;
+}
+#kit .kit-bar .muted[style]{
+  color: var(--muted) !important;
+}
+#kit .kit-bar a.btn{
+  /* download CTA stays bold — flip from default to gold on hover */
+  background: var(--fg);
+  color: var(--bg);
+  border: 1px solid var(--fg);
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+#kit .kit-bar a.btn:hover{
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+#kit .kit-card{
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  transition: border-color .18s ease, transform .18s ease;
+}
+#kit .kit-card:hover{
+  border-color: rgba(201,150,43,0.35);
+  transform: translateY(-2px);
+}
+#kit .kit-card figcaption{
+  color: var(--muted);
+}
+#kit .kit-card figcaption strong{
+  color: var(--fg);
+}
+
+/* -------------------------------------------------------------
+   3. #media-kit — tier above #kit with double-ring gold frame
+   -------------------------------------------------------------
+   The Hotere kit is the upgraded, multilingual one. Visual
+   tiering: double gold ring on the kit-bar, gold left-rule on
+   each language band heading.
+   ------------------------------------------------------------- */
+#media-kit{
+  background: var(--bg);  /* token, instead of inline #0a0a0a */
+  border-top: 1px solid var(--line);
+}
+#media-kit h2[style]{
+  color: var(--fg) !important;
+}
+#media-kit .right[style]{
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+#media-kit .kit-bar{
+  background: var(--bg-2);
+  border: 1px solid var(--accent);
+  /* double-ring: outer gold (border) + inner soft gold shadow */
+  box-shadow:
+    0 0 0 4px var(--bg),
+    0 0 0 5px rgba(201,150,43,0.35),
+    inset 0 0 0 1px rgba(201,150,43,0.15);
+}
+#media-kit .kit-bar .kicker[style]{
+  color: var(--accent) !important;
+}
+#media-kit .kit-bar h3[style]{
+  color: var(--fg) !important;
+}
+#media-kit .kit-bar .muted[style]{
+  color: var(--muted) !important;
+}
+#media-kit .kit-bar a.btn[style]{
+  background: var(--red) !important;
+  border-color: var(--red) !important;
+  color: var(--fg) !important;
+  transition: background .18s ease, border-color .18s ease;
+}
+#media-kit .kit-bar a.btn[style]:hover{
+  background: var(--red-2) !important;
+  border-color: var(--red-2) !important;
+}
+/* Language band headings: English / Te reo Māori / Tagalog */
+#media-kit > .wrap > .reveal > h3[style]{
+  color: var(--fg) !important;
+  position: relative;
+  padding-left: 56px;
+}
+#media-kit > .wrap > .reveal > h3[style]::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+}
+/* Cards across all three languages */
+#media-kit .kit-card[style]{
+  background: var(--bg-2) !important;
+  border: 1px solid rgba(201,150,43,0.25) !important;
+  transition: border-color .18s ease, transform .18s ease;
+}
+#media-kit .kit-card[style]:hover{
+  border-color: var(--accent) !important;
+  transform: translateY(-2px);
+}
+#media-kit .kit-card figcaption[style]{
+  color: var(--muted) !important;
+}
+#media-kit .kit-card figcaption strong[style]{
+  color: var(--fg) !important;
+}
+
+/* -------------------------------------------------------------
+   4. #families — strip hardcoded #fff, run bone-on-ink properly
+   -------------------------------------------------------------
+   Inline style= attributes in this section hardcode pure white,
+   pure-red borders, and milky opacity:.85 text. We use [style]
+   attribute selectors + !important to beat inline declarations
+   without touching markup. This is the one section where the
+   author baked styling into HTML, so !important is justified.
+   ------------------------------------------------------------- */
+#families{
+  background: var(--bg) !important;
+  border-top: 1px solid var(--line) !important;
+  color: var(--fg) !important;
+}
+#families .kicker[style]{
+  color: var(--accent) !important;
+  opacity: 1 !important;
+}
+#families h2[style]{
+  color: var(--fg) !important;
+}
+#families .rule[style]{
+  background: var(--accent) !important;  /* was var(--red) */
+}
+#families .right[style]{
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+/* The four normal tool cards in #families */
+#families .tool[style]{
+  background: var(--bg-2) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--fg) !important;
+  transition: border-color .18s ease, transform .18s ease;
+}
+#families .tool[style]:hover{
+  border-color: rgba(201,150,43,0.35) !important;
+  transform: translateY(-2px);
+}
+#families .tool h4[style]{
+  color: var(--fg) !important;
+}
+#families .tool p[style]{
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+/* The fifth (CC BY-SA) card had red border + red heading.
+   Retune to gold — CC BY-SA is metadata, not a CTA. */
+#families .tool[style*="--red"]{
+  border: 1px solid var(--accent) !important;
+}
+#families .tool h4[style*="--red"]{
+  color: var(--accent) !important;
+}
+/* The three buttons: Open the Course / Read the License / Fork on GitHub
+   First button uses default .btn (already gold-friendly from base).
+   The two outlined ones carry inline transparent bg + #fff border. */
+#families a.btn[style]{
+  background: transparent !important;
+  color: var(--fg) !important;
+  border: 1px solid var(--line) !important;
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+#families a.btn[style]:hover{
+  background: var(--accent) !important;
+  color: var(--bg) !important;
+  border-color: var(--accent) !important;
+}
+/* Primary "Open the Course →" button — no inline style, uses base .btn.
+   Scope it so it doesn't compete with the outlined siblings. */
+#families a.btn:not([style]){
+  background: var(--fg);
+  color: var(--bg);
+  border: 1px solid var(--fg);
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+#families a.btn:not([style]):hover{
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
