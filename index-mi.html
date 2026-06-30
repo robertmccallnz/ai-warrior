@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="mi" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hei Toa AI — Te Kiwi Dialectic</title>
+<meta name="description" content="He akoranga nā te iwi mahi mō te mātauranga AI, te mārama ki te whakaaro pāpori, me te whakaaro pūnaha. Ko Te Papa e tūtaki ana ki te Soviet constructivism. Nā Robert McCall i Ōtepoti, Aotearoa." />
+<meta name="theme-color" content="#0a0a0a" />
+<meta property="og:title" content="Hei Toa AI" />
+<meta property="og:description" content="Whakangungua te hinengaro. Whakangaihia te iwi. He akoranga nā Te Kiwi Dialectic." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/hero-poster.svg" />
+<link rel="alternate" hreflang="en" href="index.html" />
+<link rel="alternate" hreflang="mi" href="index-mi.html" />
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/hotere-patch.css" />
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --bg-2:#111;
+    --fg:#f5f5f5;
+    --muted:#a3a3a3;
+    --red:#d7261e;
+    --red-2:#ff2a1f;
+    --line:rgba(255,255,255,0.12);
+    --card:#161616;
+    --card-fg:#f5f5f5;
+    --accent:#ffffff;
+    --maxw:1240px;
+    --radius:2px;
+  }
+  html[data-theme="light"]{
+    --bg:#fafaf7;
+    --bg-2:#ffffff;
+    --fg:#0a0a0a;
+    --muted:#525252;
+    --red:#c81912;
+    --red-2:#d7261e;
+    --line:rgba(0,0,0,0.12);
+    --card:#ffffff;
+    --card-fg:#0a0a0a;
+    --accent:#0a0a0a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:'Work Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{overflow-x:hidden}
+  a{color:inherit}
+  img,svg{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .display{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:0.02em;line-height:0.92;text-transform:uppercase}
+  .kicker{font-family:'Bebas Neue',sans-serif;letter-spacing:0.22em;font-size:13px;color:var(--red)}
+  .muted{color:var(--muted)}
+  .btn{display:inline-block;padding:14px 22px;background:var(--red);color:#fff;text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;font-size:13px;border:2px solid var(--red);transition:transform .12s ease, background .12s ease}
+  .btn:hover{background:#fff;color:var(--red);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--fg);border-color:var(--fg)}
+  .btn.ghost:hover{background:var(--fg);color:var(--bg)}
+
+  /* HEADER */
+  header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--maxw);margin:0 auto}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
+  .brand svg{width:34px;height:34px}
+  .brand .name{font-family:'Bebas Neue',sans-serif;letter-spacing:0.14em;font-size:20px}
+  .brand .name .red{color:var(--red)}
+  nav.links{display:flex;align-items:center;gap:26px}
+  nav.links a{text-decoration:none;font-weight:600;font-size:14px;letter-spacing:0.04em}
+  nav.links a:hover{color:var(--red)}
+  .nav-actions{display:flex;align-items:center;gap:10px}
+  .icon-btn{background:transparent;color:var(--fg);border:1px solid var(--line);padding:8px 10px;cursor:pointer;font-size:14px;border-radius:2px}
+  .lang-switch{font-family:'Bebas Neue',sans-serif;letter-spacing:0.18em;font-size:12px;padding:8px 10px;border:1px solid var(--line);text-decoration:none;color:var(--fg)}
+  .lang-switch:hover{border-color:var(--red);color:var(--red)}
+  .hamburger{display:none;background:transparent;border:1px solid var(--line);color:var(--fg);padding:8px 10px;cursor:pointer}
+
+  /* TICKER */
+  .ticker{background:var(--red);color:#fff;overflow:hidden;border-top:1px solid #000;border-bottom:1px solid #000}
+  .ticker-track{display:flex;gap:48px;white-space:nowrap;padding:10px 0;animation:scroll 38s linear infinite;font-family:'Bebas Neue',sans-serif;letter-spacing:0.22em;font-size:13px}
+  .ticker-track span{padding:0 8px}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* HERO */
+  .hero{position:relative;padding:80px 0 60px;border-bottom:1px solid var(--line);overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(56px,9vw,140px);margin:12px 0 18px}
+  .hero h1 .red{color:var(--red)}
+  .hero p.lede{font-size:19px;line-height:1.55;max-width:54ch;color:var(--muted)}
+  .hero-cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+  .poster{position:relative;border:2px solid var(--fg);box-shadow:14px 14px 0 var(--red)}
+  .poster img{width:100%;display:block}
+  .hero::after{content:"";position:absolute;left:-10%;bottom:-30%;width:60%;height:60%;background:radial-gradient(closest-side,var(--red) 0%,transparent 70%);opacity:.18;pointer-events:none}
+
+  /* SECTION HEAD */
+  section{padding:90px 0;border-bottom:1px solid var(--line)}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+  .section-head h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);margin:6px 0 0;letter-spacing:0.02em}
+  .section-head .right{max-width:48ch;color:var(--muted)}
+  .rule{height:6px;background:var(--red);width:90px}
+
+  /* MANIFESTO */
+  .manifesto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .manifesto-card{background:var(--card);color:var(--card-fg);padding:28px;border:1px solid var(--line);position:relative}
+  .manifesto-card .num{font-family:'Bebas Neue',sans-serif;font-size:64px;color:var(--red);line-height:1}
+  .manifesto-card h3{font-family:'Bebas Neue',sans-serif;letter-spacing:0.04em;font-size:26px;margin:12px 0 8px}
+  .manifesto-card p{color:var(--muted);font-size:15px;line-height:1.6;margin:0}
+
+  /* COURSES */
+  .courses{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .module{background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;text-decoration:none;color:var(--card-fg);transition:transform .15s ease,border-color .15s ease}
+  .module:hover{transform:translateY(-3px);border-color:var(--red)}
+  .module .thumb{aspect-ratio:16/10;position:relative;overflow:hidden;background:#000}
+  .module .thumb svg{width:100%;height:100%}
+  .module .body{padding:20px 22px 24px}
+  .module .tag{font-family:'Bebas Neue',sans-serif;letter-spacing:0.2em;font-size:12px;color:var(--red)}
+  .module h3{font-family:'Bebas Neue',sans-serif;font-size:26px;margin:8px 0 8px;letter-spacing:0.03em}
+  .module p{font-size:14.5px;line-height:1.55;color:var(--muted);margin:0 0 14px}
+  .module .arrow{font-family:'Bebas Neue',sans-serif;letter-spacing:0.2em;font-size:13px;color:var(--fg)}
+  .module:hover .arrow{color:var(--red)}
+
+  /* COURSES CTA (single poster card) */
+  .courses-cta{display:grid;grid-template-columns:1.05fr 1fr;gap:0;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--card-fg);transition:transform .15s ease,border-color .15s ease}
+  .courses-cta:hover{transform:translateY(-2px);border-color:var(--red)}
+  .courses-cta .cta-art{aspect-ratio:16/9;overflow:hidden;background:#000}
+  .courses-cta .cta-art svg{width:100%;height:100%;display:block}
+  .courses-cta .cta-body{padding:40px 44px;display:flex;flex-direction:column;justify-content:center}
+  .courses-cta .tag{font-family:'Bebas Neue',sans-serif;letter-spacing:0.22em;font-size:13px;color:var(--red)}
+  .courses-cta h3{font-family:'Bebas Neue',sans-serif;font-size:46px;line-height:1.02;margin:12px 0 14px;letter-spacing:0.02em}
+  .courses-cta p{font-size:16px;line-height:1.6;color:var(--muted);margin:0 0 22px;max-width:46ch}
+  .courses-cta .arrow.big{font-family:'Bebas Neue',sans-serif;letter-spacing:0.24em;font-size:16px;color:var(--fg);border-top:2px solid var(--red);padding-top:14px;display:inline-block;align-self:flex-start}
+  .courses-cta:hover .arrow.big{color:var(--red)}
+
+  /* THINKERS */
+  .thinkers{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .thinker{background:var(--card);border:1px solid var(--line);padding:18px;text-decoration:none;color:var(--card-fg);transition:background .15s ease}
+  .thinker:hover{background:var(--red);color:#fff}
+  .thinker .name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.04em}
+  .thinker .years{color:var(--muted);font-size:12px;margin-top:4px}
+  .thinker:hover .years{color:#fff}
+  .thinker .quote{font-size:13px;line-height:1.5;margin-top:10px}
+  .thinker[data-pending="true"]{position:relative}
+  .thinker[data-pending="true"]::after{content:"KEI TE HAERE MAI";position:absolute;top:10px;right:10px;font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:10px;background:var(--red);color:#fff;padding:3px 8px;border-radius:2px}
+  .thinker[data-pending="true"]:hover::after{background:#fff;color:var(--red)}
+
+  /* PILLARS + PRICING */
+  .pillars-wrap{display:grid;grid-template-columns:1.2fr 0.8fr;gap:36px;align-items:start}
+  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .pillar{padding:22px;background:var(--card);border-left:4px solid var(--red)}
+  .pillar h4{font-family:'Bebas Neue',sans-serif;font-size:22px;margin:0 0 6px;letter-spacing:0.03em}
+  .pillar p{color:var(--muted);font-size:14.5px;line-height:1.55;margin:0}
+  .pricing{background:var(--red);color:#fff;padding:36px;position:relative;overflow:hidden}
+  .pricing::after{content:"";position:absolute;right:-30px;top:-30px;width:200px;height:200px;border:14px solid #fff;border-radius:50%;opacity:.16}
+  .pricing .price{font-family:'Bebas Neue',sans-serif;font-size:90px;line-height:1}
+  .pricing .price small{font-size:18px;letter-spacing:0.1em}
+  .pricing ul{padding-left:18px;line-height:1.7;font-size:15px}
+  .pricing a.btn{background:#fff;color:var(--red);border-color:#fff;margin-top:14px}
+  .pricing a.btn:hover{background:#0a0a0a;color:#fff;border-color:#0a0a0a}
+
+  /* TOOLS */
+  .tools{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .tool{padding:22px;border:1px dashed var(--line);background:transparent}
+  .tool h4{font-family:'Bebas Neue',sans-serif;font-size:22px;margin:0 0 6px;color:var(--red);letter-spacing:0.04em}
+  .tool p{color:var(--muted);margin:0;font-size:14px;line-height:1.55}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:36px;align-items:center}
+  .about-photo{aspect-ratio:1/1;background:var(--card);border:2px solid var(--fg);box-shadow:14px 14px 0 var(--red);display:grid;place-items:center;color:var(--muted);font-family:'Bebas Neue',sans-serif;letter-spacing:0.2em}
+  .about p{font-size:17px;line-height:1.65;color:var(--muted);max-width:60ch}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+  .tag-chip{padding:8px 14px;border:1px solid var(--line);font-size:12px;font-family:'Bebas Neue',sans-serif;letter-spacing:0.18em}
+
+  /* SOCIAL KIT */
+  .kit-bar{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 28px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--red);margin-bottom:30px;flex-wrap:wrap}
+  .kit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .kit-card{margin:0;background:var(--card);border:1px solid var(--line);overflow:hidden;transition:transform .15s ease, border-color .15s ease}
+  .kit-card:hover{transform:translateY(-3px);border-color:var(--red)}
+  .kit-card a{display:block;background:#000}
+  .kit-card img{width:100%;height:170px;object-fit:cover;display:block}
+  .kit-card figcaption{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;font-size:13px;color:var(--muted)}
+  .kit-card figcaption strong{font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;color:var(--fg);font-weight:400}
+  .prompts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .prompt{position:relative;background:var(--card);border:1px solid var(--line);padding:22px 22px 56px;color:var(--card-fg)}
+  .prompt .tag{font-family:'Bebas Neue',sans-serif;letter-spacing:.18em;font-size:12px;color:var(--red);margin-bottom:10px}
+  .prompt p{margin:0;font-size:15px;line-height:1.6;color:var(--muted)}
+  .copy-btn{position:absolute;right:18px;bottom:16px;padding:8px 14px;background:transparent;color:var(--fg);border:1px solid var(--fg);font-family:'Bebas Neue',sans-serif;letter-spacing:.18em;font-size:12px;cursor:pointer;transition:background .12s ease,color .12s ease}
+  .copy-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
+  .copy-btn.copied{background:var(--red);color:#fff;border-color:var(--red)}
+  @media (max-width:1000px){
+    .kit-grid{grid-template-columns:repeat(2,1fr)}
+    .prompts{grid-template-columns:1fr}
+  }
+  @media (max-width:620px){
+    .kit-grid{grid-template-columns:1fr}
+  }
+
+  /* CTA BANNER */
+  .banner{background:var(--red);color:#fff;padding:80px 0;text-align:center}
+  .banner h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7vw,96px);margin:0;letter-spacing:0.02em;line-height:0.95}
+  .banner p{margin:18px auto 26px;max-width:60ch;font-size:17px;opacity:.92}
+  .banner .btn{background:#0a0a0a;color:#fff;border-color:#0a0a0a}
+  .banner .btn:hover{background:#fff;color:#0a0a0a}
+
+  /* FOOTER */
+  footer{padding:50px 0;border-top:1px solid var(--line);background:var(--bg-2)}
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+  .foot a{color:var(--fg);text-decoration:none;margin-left:14px}
+  .foot a:hover{color:var(--red)}
+
+  /* REVEAL ANIMATION */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* RESPONSIVE */
+  @media (max-width: 1000px){
+    .hero .wrap{grid-template-columns:1fr}
+    .manifesto-grid{grid-template-columns:1fr 1fr}
+    .courses{grid-template-columns:1fr 1fr}
+    .courses-cta{grid-template-columns:1fr}
+    .courses-cta .cta-body{padding:28px 26px 32px}
+    .courses-cta h3{font-size:36px}
+    .thinkers{grid-template-columns:repeat(3,1fr)}
+    .pillars-wrap{grid-template-columns:1fr}
+    .pillars{grid-template-columns:1fr 1fr}
+    .tools{grid-template-columns:repeat(2,1fr)}
+    .about-grid{grid-template-columns:1fr}
+    nav.links{display:none}
+    .hamburger{display:inline-block}
+  }
+  @media (max-width: 620px){
+    .manifesto-grid,.courses,.pillars,.tools{grid-template-columns:1fr}
+    .thinkers{grid-template-columns:repeat(2,1fr)}
+    section{padding:64px 0}
+  }
+  .mobile-menu{display:none;border-bottom:1px solid var(--line);background:var(--bg-2)}
+  .mobile-menu.open{display:block}
+  .mobile-menu a{display:block;padding:14px 24px;text-decoration:none;color:var(--fg);font-weight:600;border-top:1px solid var(--line)}
+
+  /* utility */
+  .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .lockup{display:flex;gap:8px;align-items:center}
+
+  /* Focus rings (accessibility) */
+  a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="#top" aria-label="Te kāinga o Kiwi Dialectic">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <rect width="200" height="200" fill="#0a0a0a"/>
+        <path fill="#d7261e" d="M100 22 c 42 0 70 32 70 72 c 0 38 -28 64 -62 64 c -32 0 -54 -22 -54 -50 c 0 -26 20 -44 44 -44 c 22 0 36 14 36 32 c 0 16 -12 26 -26 26 c -12 0 -20 -8 -20 -18 c 0 -8 6 -14 14 -14 c 6 0 10 4 10 9 L 112 105 c 0 -10 -8 -16 -18 -16 c -14 0 -24 10 -24 24 c 0 18 14 30 32 30 c 22 0 38 -16 38 -38 c 0 -26 -20 -44 -46 -44 c -30 0 -52 22 -52 52 c 0 32 24 56 58 56 c 38 0 66 -28 66 -66 c 0 -44 -32 -76 -76 -76 c -10 0 -18 1 -26 3 L 100 22 Z"/>
+      </svg>
+      <span class="name"><span class="red">KD</span> · KIWI DIALECTIC</span>
+    </a>
+
+    <nav class="links" aria-label="Matua">
+      <a href="#manifesto">Whakapuakanga</a>
+      <a href="#modules">Ngā Wāhanga</a>
+      <a href="#thinkers">Ngā Kaiwhakaaro</a>
+      <a href="https://robertmccallnz.github.io/thinkers-mapper/" target="_blank" rel="noopener">Mahere</a>
+      <a href="#pillars">Ngā Pou</a>
+      <a href="#tools">Ngā Taputapu</a>
+      <a href="#kit">Pouaka Pāpori</a>
+      <a href="https://robertmccallnz.github.io/kiwidialecticcalendar-/badges/" target="_blank" rel="noopener">Ngā Tohu</a>
+      <a href="#media-kit">Pouaka Pāpāho</a>
+      <a href="partners-mi.html">Ngā Hoa</a>
+      <a href="#about">Mōku</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="lang-switch" href="index.html" lang="en" title="Read in English">EN</a>
+      <button class="icon-btn" id="theme-toggle" aria-label="Whakaaro kanapa, pōuri rānei" title="Whakawhiti āhua">◐</button>
+      <a class="btn" href="https://kiwidialectic.com/subscribe" target="_blank" rel="noopener">Tuhinga Mai</a>
+      <button class="hamburger" id="hamburger" aria-label="Whakatūwhera tahua" aria-expanded="false">≡</button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" lang="en">English (EN)</a>
+    <a href="#manifesto">Whakapuakanga</a>
+    <a href="#modules">Ngā Wāhanga</a>
+    <a href="#thinkers">Ngā Kaiwhakaaro</a>
+    <a href="https://robertmccallnz.github.io/thinkers-mapper/" target="_blank" rel="noopener">Mahere</a>
+    <a href="#pillars">Ngā Pou</a>
+    <a href="#tools">Ngā Taputapu</a>
+    <a href="#kit">Pouaka Pāpori</a>
+    <a href="https://robertmccallnz.github.io/kiwidialecticcalendar-/badges/" target="_blank" rel="noopener">Ngā Tohu</a>
+    <a href="#media-kit">Pouaka Pāpāho</a>
+    <a href="partners-mi.html">Ngā Hoa</a>
+    <a href="#about">Mōku</a>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>AROTAU AI</span><span>·</span>
+    <span>MĀRAMATANGA WHAKAARO</span><span>·</span>
+    <span>GRAMSCI</span><span>·</span>
+    <span>KROPOTKIN</span><span>·</span>
+    <span>GRAEBER</span><span>·</span>
+    <span>FREIRE</span><span>·</span>
+    <span>DELEUZE</span><span>·</span>
+    <span>BAKUNIN</span><span>·</span>
+    <span>WHAKANGUNGUA TE HINENGARO · WHAKANGAIHIA TE IWI</span><span>·</span>
+    <span>AROTAU AI</span><span>·</span>
+    <span>MĀRAMATANGA WHAKAARO</span><span>·</span>
+    <span>GRAMSCI</span><span>·</span>
+    <span>KROPOTKIN</span><span>·</span>
+    <span>GRAEBER</span><span>·</span>
+    <span>FREIRE</span><span>·</span>
+    <span>DELEUZE</span><span>·</span>
+    <span>BAKUNIN</span><span>·</span>
+    <span>WHAKANGUNGUA TE HINENGARO · WHAKANGAIHIA TE IWI</span><span>·</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">HE AKORANGA NĀ TE KIWI DIALECTIC · ŌTEPOTI · AOTEAROA</div>
+      <h1 class="display">HEI TOA<br/><span class="red">AI</span></h1>
+      <p class="lede">E ono ngā wāhanga. E ono ngā kaiwhakaaro. Kotahi te kaupapa — hei whakangungu i ngā kaimahi, i ngā kaiwhakahaere, i ngā kaituhi kia āhei ki te whakatere i te miihini, kaua ko rātou e tāmia e ia. Ko te mātauranga o te hunga e tāmia ana, kua whakahoutia mō te pūnaha tatauranga.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#modules">Tīmata te Akoranga</a>
+        <a class="btn ghost" href="https://kiwidialectic.com" target="_blank" rel="noopener">Pānuihia te Dialectic →</a>
+      </div>
+    </div>
+    <div class="poster reveal">
+      <img src="assets/hero-poster.svg" alt="Pānui constructivist Hei Toa AI — matā whero, pene kua whakaarahia, tohu AI" />
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">01 · Te Whakapuakanga</div>
+        <h2>He Aha I Whakangungu Ai</h2>
+        <div class="rule" style="margin-top:14px"></div>
+      </div>
+      <p class="right">I whakatūpato a Freire i a tātou mō te tauira pēke — ngā ākonga hei ipu māpuna noa iho. I whakatūpato a Gramsci i a tātou mō te mana whakahaere — te whakaaro noa e mahi ana mō te hunga rangatira. Inākuanei, kei te whakanui te AI i ēnei mea e rua i te wā kotahi. Ko te akoranga te urupare.</p>
+    </div>
+
+    <div class="manifesto-grid">
+      <article class="manifesto-card reveal">
+        <div class="num">01</div>
+        <h3>He Whakahē i te Tauira Pēke</h3>
+        <p>Ko te tūpono nui o te AI auaha, ka noho hei akomanga tauira-pēke nui rawa atu i ngā wā o mua — he kainga noa o ngā whakautu kua oti kē te whakareri. E whakahē ana tātou. Ka whakamahia e tātou te kōrerorero, te whakaputa pātai, me te mahi.</p>
+      </article>
+      <article class="manifesto-card reveal">
+        <div class="num">02</div>
+        <h3>He Whakahē i te Whakaae Pohewa</h3>
+        <p>Ko ngā tauira kua whakangungua ki te ipurangi o nāianei, ka riro mai i a rātou tōna mana whakahaere. Ko tā tātou mahi he tapa i te anga, ki te pānui i ngā mea e kore e taea e te miihini, me te tuhi anō ki te rekoata.</p>
+      </article>
+      <article class="manifesto-card reveal">
+        <div class="num">03</div>
+        <h3>Mō Te Hunga Mahi</h3>
+        <p>Ko te taputapu mōrearea rawa atu, ko te hinengaro kua whakangungua. Ko te mātauranga AI, ka rite ināianei ki te mātauranga ki te tuhituhi i tērā wā. E kore tātou e whakaae kia tōmuri te hunga mahi ki tōna ake rautau.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section id="modules">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">02 · Te Akoranga</div>
+        <h2>Kei Substack Ia Akoranga.</h2>
+        <div class="rule" style="margin-top:14px"></div>
+      </div>
+      <p class="right">He koreutu te pānui i ia akoranga ki Substack. Ko te akoranga katoa — ngā pukapuka mahi, ngā tohutohu, te pātai/whakautu ia wiki — he $7/marama ki kiwidialectic.com.</p>
+    </div>
+
+    <a class="courses-cta reveal" href="https://www.kiwidialectic.com/s/courses" target="_blank" rel="noopener">
+      <div class="cta-art" aria-hidden="true">
+        <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice">
+          <rect width="640" height="360" fill="#0a0a0a"/>
+          <polygon points="0,0 440,0 220,360 0,360" fill="#d7261e"/>
+          <circle cx="480" cy="180" r="104" fill="none" stroke="#fff" stroke-width="10"/>
+          <text x="480" y="208" font-family="Bebas Neue,Impact" font-size="96" fill="#fff" text-anchor="middle">AI</text>
+          <rect x="0" y="340" width="640" height="20" fill="#f5f5f5"/>
+        </svg>
+      </div>
+      <div class="cta-body">
+        <div class="tag">Ngā Akoranga Katoa · Kiwi Dialectic</div>
+        <h3>Ia Akoranga. Kotahi te Rārangi.</h3>
+        <p>Kei Substack te rārangi katoa o ngā akoranga — a Gramsci, a Kropotkin, a Graeber, a Freire, a Deleuze, a Bakunin, me ia akoranga hou ka tukuna. He koreutu te pānui; tuhinga mai mō ngā pukapuka mahi, ngā tohutohu, me te pātai/whakautu ia wiki.</p>
+        <div class="arrow big">Tirohia ngā akoranga katoa ki Substack →</div>
+      </div>
+    </a>
+    </div>
+  </div>
+</section>
+
+<!-- THINKERS -->
+<section id="thinkers">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">03 · Ngā Kaiwhakaaro</div>
+        <h2>E Ono Ngā Hoa Mahi i te Pānui</h2>
+        <div class="rule" style="margin-top:14px"></div>
+      </div>
+      <p class="right">Kua herea ia wāhanga ki tētahi kaiwhakaaro, e whakamārama ana tana mahi i tētahi take o te wā AI. Pātōhia he kāri ki te pānui i te akoranga e hāngai ana ki Kiwi Dialectic.</p>
+    </div>
+
+    <div class="thinkers">
+      <a class="thinker reveal" href="https://www.kiwidialectic.com/p/gramsci-for-aotearoa-lesson-1-who" target="_blank" rel="noopener">
+        <div class="name">Gramsci</div><div class="years">1891 – 1937 · Akoranga 1</div>
+        <div class="quote">"Ko te raruraru, ko te mate haere o te tawhito, kāore anō kia taea te whānau mai te hou."</div>
+      </a>
+      <a class="thinker reveal" href="https://www.kiwidialectic.com/p/lesson-1-who-was-kropotkin-and-what" target="_blank" rel="noopener">
+        <div class="name">Kropotkin</div><div class="years">1842 – 1921 · Akoranga 2</div>
+        <div class="quote">"He āhuatanga o te kukuwhitanga te āwhina tahi."</div>
+      </a>
+      <a class="thinker reveal" href="https://www.kiwidialectic.com/p/graeber-lesson-1-who-was-graeber" target="_blank" rel="noopener">
+        <div class="name">Graeber</div><div class="years">1961 – 2020 · Akoranga 3</div>
+        <div class="quote">"Ko te pono huna nui o te ao, he mea hanga nā tātou."</div>
+      </a>
+      <a class="thinker reveal" href="https://www.kiwidialectic.com/p/freire-mo-aotearoa-course-launch" target="_blank" rel="noopener" data-pending="true" aria-label="Freire — Mātauranga o te Pūnaha Tatauranga, Akoranga 4, ka whakarewahia ā-Hereturikōkā 2026">
+        <div class="name">Freire</div><div class="years">1921 – 1997 · Akoranga 4 · Mātauranga o te Pūnaha Tatauranga</div>
+        <div class="quote">"Ko te mātauranga, hei whakaurutau, hei whakawātea rānei."</div>
+      </a>
+      <a class="thinker reveal" href="https://www.kiwidialectic.com/p/gilles-deleuze-for-educators-artists" target="_blank" rel="noopener">
+        <div class="name">Deleuze</div><div class="years">1925 – 1995 · Akoranga 5</div>
+        <div class="quote">"Kāore he take kia mataku, kia tūmanako rānei, engari kia rapu noa i ngā patu hou."</div>
+      </a>
+      <a class="thinker reveal" href="https://www.kiwidialectic.com/p/bakunin-mo-aotearoa-lesson-1-ko-wai" target="_blank" rel="noopener" data-pending="true" aria-label="Bakunin — Tangi o te Tāheke, Akoranga 6, ka tae mai ā-Hōngongoi 2026">
+        <div class="name">Bakunin</div><div class="years">1814 – 1876 · Akoranga 6 · Tangi o te Tāheke</div>
+        <div class="quote">"Ko te hiahia kia tukinotia, he hiahia auaha hoki."</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS + PRICING -->
+<section id="pillars">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">04 · Ngā Pou</div>
+        <h2>He Aha Te Toa AI?</h2>
+        <div class="rule" style="margin-top:14px"></div>
+      </div>
+      <p class="right">Ehara i te miihinari tohutohu. Ehara i te kaihoko whakanui. He kaimahi e taea ana te pānui i te miihini, te tuhi anō ki roto, me te whakahē i ngā mea me whakahē.</p>
+    </div>
+
+    <div class="pillars-wrap">
+      <div class="pillars">
+        <div class="pillar reveal"><h4>Kitea te Anga</h4><p>Pānuihia te whakaaro e tau ana ki roto i ia tauira, ia raraunga, ia tautuhinga. Whakakitea te mea huna.</p></div>
+        <div class="pillar reveal"><h4>Hanga me te Kaupapa</h4><p>Ko ia taputapu ka hangaia e koe me whai painga mō te hapori, te āwhina tahi, te mana o te iwi mahi rānei — ki te kore, kaua e hangaia.</p></div>
+        <div class="pillar reveal"><h4>Mana Motuhake Kare ā-Roto</h4><p>Whakahē i te ohanga aronui kei roto i te pouaka kōrerorero. Whiriwhirihia te tikanga i mua i ngā mēhua arotahi.</p></div>
+        <div class="pillar reveal"><h4>Tautoko mā te Auaha</h4><p>Whakaputaina. Whakaakona. Whakaaturia te mahi ki te marea. Ko te hinengaro kua whakangungua kāore e tohatoha, he toa kua kati.</p></div>
+        <div class="pillar reveal" style="grid-column:1 / -1"><h4>Whakaaro Pūnaha</h4><p>Ko te matapihi kōrerorero te wāhi iti rawa o te miihini. Pānuihia te pokapū raraunga, te whakaheke kaimahi, te tangohanga, te kaupapa here.</p></div>
+      </div>
+
+      <aside class="pricing reveal" aria-label="Utu">
+        <div class="kicker" style="color:#fff;opacity:.9">Uru ki te Akoranga Katoa</div>
+        <div class="price">$7<small> /marama NZD</small></div>
+        <ul>
+          <li>Ngā wāhanga e ono katoa me ngā pukapuka mahi</li>
+          <li>Pātai/whakautu tuhi ia wiki</li>
+          <li>Whare pukapuka tohutohu me te rārangi pānui</li>
+          <li>Aronga kōrero whakahoa</li>
+          <li>Whakakorengia i tētahi wā — kāore he DRM</li>
+        </ul>
+        <a class="btn" href="https://kiwidialectic.com/subscribe" target="_blank" rel="noopener">Hono ki te Akoranga →</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">05 · Ngā Taputapu</div>
+        <h2>Ngā Mea E Whakamahia Ana</h2>
+        <div class="rule" style="margin-top:14px"></div>
+      </div>
+      <p class="right">He pouaka taputapu nā te hunga mahi. He utu māmā, he tuwhera ina taea, he koi i ngā wā katoa. Ko ia taputapu, he upoko o te akoranga whānui.</p>
+    </div>
+
+    <div class="tools">
+      <div class="tool reveal"><h4>Perplexity</h4><p>Te rapu me ngā tohutoro. Whakamahia hei whakawhānui rangahau, kaua hei whakatau whakamutunga.</p></div>
+      <div class="tool reveal"><h4>Hanga AI</h4><p>Ngā tauira ā-rohe, ā-tūnga hoki. Hangaia he mea iti. Tukua tuatahi ki tō iwi.</p></div>
+      <div class="tool reveal"><h4>Substack</h4><p>Tō ake perehi. Te wāhi e ora ai te tuhituhi.</p></div>
+      <div class="tool reveal"><h4>Ngā Toi hei Mātauranga</h4><p>Te whiti, ngā pānui, ngā zine — te whakaako e hipa ana i te pūnaha tatauranga.</p></div>
+      <div class="tool reveal"><h4>Whakaaro Pūnaha</h4><p>Te akoranga ki te kite i ngā mea e hono ana, i mua i ngā mea e tīrama ana.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">06 · Te Kaituhi</div>
+        <h2>Mō Robert</h2>
+        <div class="rule" style="margin-top:14px"></div>
+      </div>
+      <p class="right">He kaituhi, he kaiwhakahaere, he ētita o The Kiwi Dialectic, kei Ōtepoti, Aotearoa.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-photo reveal" aria-label="Wāhi mō te whakaahua">TŌ WHAKAAHUA KI KONEI</div>
+      <div class="reveal">
+        <p>Ka tuhi a Robert i Ōtepoti / Dunedin mō te mātauranga hāngai ki te hapori, te mātauranga AI, me te ohanga tōrangapū o ngā pāpāho. Ko The Kiwi Dialectic he pānui ā-wiki nā te hunga mahi, e hāpai ana i ngā tōrangapū o Aotearoa, ngā whakaaro tāmi, me te tuku iho roa o te whakahē — mai i a Gramsci ki a Graeber, mai i a Freire ki a Bakunin — kua whakahoutia mō te rautau pūnaha tatauranga.</p>
+        <div class="tags">
+          <span class="tag-chip">Ōtepoti</span>
+          <span class="tag-chip">Mātauranga Hāngai Hapori</span>
+          <span class="tag-chip">Mātauranga AI</span>
+          <span class="tag-chip">Whakaaro Marxist</span>
+          <span class="tag-chip">Whakahaere Hapori</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL KIT -->
+<section id="kit">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">07 · Te Pouaka Pāpori</div>
+        <h2>Whakaotia Te Akoranga. Whakangaihia Tō Putanga.</h2>
+        <div class="rule" style="margin-top:14px"></div>
+      </div>
+      <p class="right">E waru ngā pānui constructivist ki ngā rahi o Twitter/X, LinkedIn me Instagram — koreutu te tikiake ina kua oti ngā wāhanga i a koe. Whakamahia hei whakapuaki i a koe. Mauria te mahi ki roto i te pūnaha tatauranga.</p>
+    </div>
+
+    <div class="kit-bar reveal">
+      <div class="kit-bar-text">
+        <div class="kicker" style="color:var(--red)">TIKIAKE KATOA · KOREUTU</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:34px;margin:6px 0 0;letter-spacing:.04em">HEI TOA AI · POUAKA PĀPORI.ZIP</h3>
+        <p class="muted" style="margin:8px 0 0;font-size:14.5px">8 ngā pānui PNG · ngā rahi katoa o ngā pūnaha · ~310 KB</p>
+      </div>
+      <a class="btn" href="assets/social-kit/ai-warrior-social-kit.zip" download>Tikiake i te Pouaka ↓</a>
+    </div>
+
+    <div class="kit-grid">
+      <figure class="kit-card reveal">
+        <a href="assets/social-kit/tw-post-1600x900.png" download><img src="assets/social-kit/tw-post-1600x900.png" alt="Pānui Twitter 1600x900" loading="lazy" /></a>
+        <figcaption><span>Twitter / X · Pānui</span><strong>1600 × 900</strong></figcaption>
+      </figure>
+      <figure class="kit-card reveal">
+        <a href="assets/social-kit/tw-header-1500x500.png" download><img src="assets/social-kit/tw-header-1500x500.png" alt="Pane Twitter 1500x500" loading="lazy" /></a>
+        <figcaption><span>Twitter / X · Pane</span><strong>1500 × 500</strong></figcaption>
+      </figure>
+      <figure class="kit-card reveal">
+        <a href="assets/social-kit/li-post-1200x627.png" download><img src="assets/social-kit/li-post-1200x627.png" alt="Pānui LinkedIn 1200x627" loading="lazy" /></a>
+        <figcaption><span>LinkedIn · Pānui</span><strong>1200 × 627</strong></figcaption>
+      </figure>
+      <figure class="kit-card reveal">
+        <a href="assets/social-kit/li-banner-1584x396.png" download><img src="assets/social-kit/li-banner-1584x396.png" alt="Kara LinkedIn 1584x396" loading="lazy" /></a>
+        <figcaption><span>LinkedIn · Kara</span><strong>1584 × 396</strong></figcaption>
+      </figure>
+      <figure class="kit-card reveal">
+        <a href="assets/social-kit/ig-square-1080x1080.png" download><img src="assets/social-kit/ig-square-1080x1080.png" alt="Tapawhā Instagram 1080x1080" loading="lazy" /></a>
+        <figcaption><span>Instagram · Tapawhā</span><strong>1080 × 1080</strong></figcaption>
+      </figure>
+      <figure class="kit-card reveal">
+        <a href="assets/social-kit/ig-portrait-1080x1350.png" download><img src="assets/social-kit/ig-portrait-1080x1350.png" alt="Whakaahua poto Instagram 1080x1350" loading="lazy" /></a>
+        <figcaption><span>Instagram · Whakaahua Poto</span><strong>1080 × 1350</strong></figcaption>
+      </figure>
+      <figure class="kit-card reveal">
+        <a href="assets/social-kit/ig-story-1080x1920.png" download><img src="assets/social-kit/ig-story-1080x1920.png" alt="Pakiwaitara Instagram 1080x1920" loading="lazy" /></a>
+        <figcaption><span>Instagram · Pakiwaitara / Reel</span><strong>1080 × 1920</strong></figcaption>
+      </figure>
+      <figure class="kit-card reveal">
+        <a href="assets/social-kit/avatar-1000x1000.png" download><img src="assets/social-kit/avatar-1000x1000.png" alt="Whakaahua tūmataiti 1000x1000" loading="lazy" /></a>
+        <figcaption><span>Tūmataiti · Whakaahua</span><strong>1000 × 1000</strong></figcaption>
+      </figure>
+    </div>
+
+    <div class="section-head reveal" style="margin-top:70px">
+      <div>
+        <div class="kicker">Tohutohu Tapanga</div>
+        <h2 style="font-size:clamp(30px,4.4vw,52px)">Ngā Tuhinga Tonoa</h2>
+        <div class="rule" style="margin-top:14px"></div>
+      </div>
+      <p class="right">Te reo o te hunga mahi. He kupu māmā. He rārangi poto. Pātōhia ki te tāruatia, whakapiri ki tō pūnaha, hono ki te pānui e hāngai ana.</p>
+    </div>
+
+    <div class="prompts">
+      <div class="prompt reveal" data-copy="Kua oti i ahau HEI TOA AI — e ono ngā wāhanga mō te mātauranga AI mai i te tirohanga o te hunga mahi, hāngai hapori hoki. Ko te taputapu mōrearea rawa atu, ko te hinengaro kua whakangungua. Pānuihia te akoranga koreutu ki kiwidialectic.com.">
+        <div class="tag">Twitter / X · Whakaotinga</div>
+        <p>Kua oti i ahau HEI TOA AI — e ono ngā wāhanga mō te mātauranga AI mai i te tirohanga o te hunga mahi, hāngai hapori hoki. Ko te taputapu mōrearea rawa atu, ko te hinengaro kua whakangungua. Pānuihia te akoranga koreutu ki kiwidialectic.com.</p>
+        <button class="copy-btn" aria-label="Tāruatia te tapanga">Tāruatia</button>
+      </div>
+
+      <div class="prompt reveal" data-copy="Gramsci. Kropotkin. Graeber. Freire. Deleuze. Bakunin. E ono ngā kaiwhakaaro, kua whakahoutia mō te rautau pūnaha tatauranga. Kei te ora te akoranga Hei Toa AI ki kiwidialectic.com.">
+        <div class="tag">Twitter / X · Tīmatanga Aho</div>
+        <p>Gramsci. Kropotkin. Graeber. Freire. Deleuze. Bakunin. E ono ngā kaiwhakaaro, kua whakahoutia mō te rautau pūnaha tatauranga. Kei te ora te akoranga Hei Toa AI ki kiwidialectic.com.</p>
+        <button class="copy-btn" aria-label="Tāruatia te tapanga">Tāruatia</button>
+      </div>
+
+      <div class="prompt reveal" data-copy="Katahi anō ka oti i ahau Hei Toa AI — he akoranga koreutu mō te mātauranga AI, te mārama whakaaro, me te whakaaro pūnaha. E ono ngā wāhanga, e ono ngā kaiwhakaaro, kotahi te mahi: whakangungua te hinengaro, whakangaihia te iwi. He pai rawa atu mō ngā kaiwhakahaere, ngā kaiako, me ngā tāngata katoa e whakamahi ana i ngā taputapu AI i te mahi. Akoranga → kiwidialectic.com">
+        <div class="tag">LinkedIn · Tuhinga Ngaio</div>
+        <p>Katahi anō ka oti i ahau Hei Toa AI — he akoranga koreutu mō te mātauranga AI, te mārama whakaaro, me te whakaaro pūnaha. E ono ngā wāhanga, e ono ngā kaiwhakaaro, kotahi te mahi: whakangungua te hinengaro, whakangaihia te iwi. He pai rawa atu mō ngā kaiwhakahaere, ngā kaiako, me ngā tāngata katoa e whakamahi ana i ngā taputapu AI i te mahi. Akoranga → kiwidialectic.com</p>
+        <button class="copy-btn" aria-label="Tāruatia te tapanga">Tāruatia</button>
+      </div>
+
+      <div class="prompt reveal" data-copy="E ono ngā wāhanga. E ono ngā kaiwhakaaro. Kotahi te mahi. Kua oti i ahau HEI TOA AI nā Te Kiwi Dialectic — he akoranga nā te hunga mahi mō te mātauranga AI. E pānui ana: Gramsci, Kropotkin, Graeber, Freire, Deleuze, Bakunin. Whakangungua te hinengaro. Whakangaihia te iwi. Koreutu ki kiwidialectic.com. #HeiToaAI #KiwiDialectic #MātaurangaAI #MātaurangaHāngaiHapori #Aotearoa">
+        <div class="tag">Instagram · Tapawhā / Whakaahua Poto</div>
+        <p>E ono ngā wāhanga. E ono ngā kaiwhakaaro. Kotahi te mahi. Kua oti i ahau HEI TOA AI nā Te Kiwi Dialectic — he akoranga nā te hunga mahi mō te mātauranga AI. E pānui ana: Gramsci, Kropotkin, Graeber, Freire, Deleuze, Bakunin.<br/><br/>Whakangungua te hinengaro. Whakangaihia te iwi. Koreutu ki kiwidialectic.com.<br/><br/>#HeiToaAI #KiwiDialectic #MātaurangaAI #MātaurangaHāngaiHapori #Aotearoa</p>
+        <button class="copy-btn" aria-label="Tāruatia te tapanga">Tāruatia</button>
+      </div>
+
+      <div class="prompt reveal" data-copy="WHAKANGUNGUA TE HINENGARO. WHAKANGAIHIA TE IWI. He akoranga hou mō te mātauranga AI me te whakaaro tāmi — koreutu ki kiwidialectic.com. Pana ki runga.">
+        <div class="tag">Instagram · Pakiwaitara / Reel</div>
+        <p>WHAKANGUNGUA TE HINENGARO. WHAKANGAIHIA TE IWI. He akoranga hou mō te mātauranga AI me te whakaaro tāmi — koreutu ki kiwidialectic.com. Pana ki runga.</p>
+        <button class="copy-btn" aria-label="Tāruatia te tapanga">Tāruatia</button>
+      </div>
+
+      <div class="prompt reveal" data-copy="Ko te mātauranga o te hunga e tāmia ana, kua whakahoutia mō te pūnaha tatauranga. Kei te ora te akoranga Hei Toa AI — e ono ngā akoranga koreutu mō te pānui i te miihini, kaua koe e tāmia e ia. kiwidialectic.com">
+        <div class="tag">Whānui · Tapanga Poto</div>
+        <p>Ko te mātauranga o te hunga e tāmia ana, kua whakahoutia mō te pūnaha tatauranga. Kei te ora te akoranga Hei Toa AI — e ono ngā akoranga koreutu mō te pānui i te miihini, kaua koe e tāmia e ia. kiwidialectic.com</p>
+        <button class="copy-btn" aria-label="Tāruatia te tapanga">Tāruatia</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- MEDIA KIT — Hotere-style posters in three languages + Graduate press kit -->
+<section id="media-kit" style="background:#0a0a0a;border-top:1px solid rgba(255,255,255,.08)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker" style="color:var(--red)">08 · Te Pouaka Pāpāho</div>
+        <h2 style="color:#f2eed4">Te Āhua Hotere. E Toru Ngā Reo. Kotahi Te Mahi.</h2>
+        <div class="rule" style="margin-top:14px;background:#c9a84c"></div>
+      </div>
+      <p class="right" style="color:#d9d4be">E rua ngā pouaka i te wairua o Ralph Hotere — papa pango matamoe, whero whakahē, kōura whenua. Kua hangaia mō te pūnaha tatauranga, kua hangaia hoki mō te rārangi whakahē. Whakamahia ki te reo Pākehā, ki te reo Māori, ki te reo Tagalog rānei. Ka tae mai anō ngā reo i te tipu o te rōpū.</p>
+    </div>
+
+    <div class="kit-bar reveal" style="margin-top:20px;background:#0a0a0a;border:1px solid #c9a84c">
+      <div class="kit-bar-text">
+        <div class="kicker" style="color:#c9a84c">POUAKA 01 · PĀPORI · EN · MI · TL</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:34px;margin:6px 0 0;letter-spacing:.04em;color:#f2eed4">HEI TOA AI · POUAKA HOTERE.ZIP</h3>
+        <p class="muted" style="margin:8px 0 0;font-size:14.5px;color:#d9d4be">24 ngā pānui PNG · 8 ngā rahi × 3 ngā reo · ~1.1 MB</p>
+      </div>
+      <a class="btn" href="assets/social-kit-hotere/ai-warrior-hotere-social-kit.zip" download style="background:#c0280a;border-color:#c0280a;color:#f2eed4">Tikiake i te Pouaka Hotere ↓</a>
+    </div>
+
+    <div class="reveal" style="margin-top:50px">
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.05em;color:#f2eed4;margin:0 0 18px">Reo Pākehā · Train the mind. Arm the class.</h3>
+      <div class="kit-grid">
+        <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+          <a href="assets/social-kit-hotere/en/kd-hotere-tw-post-1600x900.png" download><img src="assets/social-kit-hotere/en/kd-hotere-tw-post-1600x900.png" alt="EN · Pānui Twitter" loading="lazy" /></a>
+          <figcaption style="color:#d9d4be"><span>Twitter / X · Pānui</span><strong style="color:#f2eed4">1600 × 900</strong></figcaption>
+        </figure>
+        <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+          <a href="assets/social-kit-hotere/en/kd-hotere-li-post-1200x627.png" download><img src="assets/social-kit-hotere/en/kd-hotere-li-post-1200x627.png" alt="EN · Pānui LinkedIn" loading="lazy" /></a>
+          <figcaption style="color:#d9d4be"><span>LinkedIn · Pānui</span><strong style="color:#f2eed4">1200 × 627</strong></figcaption>
+        </figure>
+        <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+          <a href="assets/social-kit-hotere/en/kd-hotere-ig-square-1080x1080.png" download><img src="assets/social-kit-hotere/en/kd-hotere-ig-square-1080x1080.png" alt="EN · Tapawhā Instagram" loading="lazy" /></a>
+          <figcaption style="color:#d9d4be"><span>Instagram · Tapawhā</span><strong style="color:#f2eed4">1080 × 1080</strong></figcaption>
+        </figure>
+        <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+          <a href="assets/social-kit-hotere/en/kd-hotere-ig-story-1080x1920.png" download><img src="assets/social-kit-hotere/en/kd-hotere-ig-story-1080x1920.png" alt="EN · Pakiwaitara Instagram" loading="lazy" /></a>
+          <figcaption style="color:#d9d4be"><span>Instagram · Pakiwaitara</span><strong style="color:#f2eed4">1080 × 1920</strong></figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:50px">
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.05em;color:#f2eed4;margin:0 0 18px">Te Reo Māori · Whakangungua te hinengaro. Whakangaihia te iwi.</h3>
+      <div class="kit-grid">
+        <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+          <a href="assets/social-kit-hotere/mi/kd-hotere-tw-post-1600x900.png" download><img src="assets/social-kit-hotere/mi/kd-hotere-tw-post-1600x900.png" alt="MI · Pānui Twitter" loading="lazy" /></a>
+          <figcaption style="color:#d9d4be"><span>Twitter / X · Pānui</span><strong style="color:#f2eed4">1600 × 900</strong></figcaption>
+        </figure>
+        <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+          <a href="assets/social-kit-hotere/mi/kd-hotere-li-post-1200x627.png" download><img src="assets/social-kit-hotere/mi/kd-hotere-li-post-1200x627.png" alt="MI · Pānui LinkedIn" loading="lazy" /></a>
+          <figcaption style="color:#d9d4be"><span>LinkedIn · Pānui</span><strong style="color:#f2eed4">1200 × 627</strong></figcaption>
+        </figure>
+        <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+          <a href="assets/social-kit-hotere/mi/kd-hotere-ig-square-1080x1080.png" download><img src="assets/social-kit-hotere/mi/kd-hotere-ig-square-1080x1080.png" alt="MI · Tapawhā Instagram" loading="lazy" /></a>
+          <figcaption style="color:#d9d4be"><span>Instagram · Tapawhā</span><strong style="color:#f2eed4">1080 × 1080</strong></figcaption>
+        </figure>
+        <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+          <a href="assets/social-kit-hotere/mi/kd-hotere-ig-story-1080x1920.png" download><img src="assets/social-kit-hotere/mi/kd-hotere-ig-story-1080x1920.png" alt="MI · Pakiwaitara Instagram" loading="lazy" /></a>
+          <figcaption style="color:#d9d4be"><span>Instagram · Pakiwaitara</span><strong style="color:#f2eed4">1080 × 1920</strong></figcaption>
+        </figure>
+      </div>
+      <p class="muted" style="margin:14px 0 0;font-size:13px;color:#9c8c5c;font-style:italic">E whakawātea ana ki te arotake whakamāori a ngā kaikōrero taketake. Whakatuwheratia he take, tuku īmēra mai rānei mēnā ka taea e koe te āwhina.</p>
+    </div>
+
+    <div class="reveal" style="margin-top:50px">
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.05em;color:#f2eed4;margin:0 0 18px">Tagalog · Sanayin ang isip. Armasan ang uri.</h3>
+      <div class="kit-grid">
+        <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+          <a href="assets/social-kit-hotere/tl/kd-hotere-tw-post-1600x900.png" download><img src="assets/social-kit-hotere/tl/kd-hotere-tw-post-1600x900.png" alt="TL · Pānui Twitter" loading="lazy" /></a>
+          <figcaption style="color:#d9d4be"><span>Twitter / X · Pānui</span><strong style="color:#f2eed4">1600 × 900</strong></figcaption>
+        </figure>
+        <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+          <a href="assets/social-kit-hotere/tl/kd-hotere-li-post-1200x627.png" download><img src="assets/social-kit-hotere/tl/kd-hotere-li-post-1200x627.png" alt="TL · Pānui LinkedIn" loading="lazy" /></a>
+          <figcaption style="color:#d9d4be"><span>LinkedIn · Pānui</span><strong style="color:#f2eed4">1200 × 627</strong></figcaption>
+        </figure>
+        <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+          <a href="assets/social-kit-hotere/tl/kd-hotere-ig-square-1080x1080.png" download><img src="assets/social-kit-hotere/tl/kd-hotere-ig-square-1080x1080.png" alt="TL · Tapawhā Instagram" loading="lazy" /></a>
+          <figcaption style="color:#d9d4be"><span>Instagram · Tapawhā</span><strong style="color:#f2eed4">1080 × 1080</strong></figcaption>
+        </figure>
+        <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+          <a href="assets/social-kit-hotere/tl/kd-hotere-ig-story-1080x1920.png" download><img src="assets/social-kit-hotere/tl/kd-hotere-ig-story-1080x1920.png" alt="TL · Pakiwaitara Instagram" loading="lazy" /></a>
+          <figcaption style="color:#d9d4be"><span>Instagram · Pakiwaitara</span><strong style="color:#f2eed4">1080 × 1920</strong></figcaption>
+        </figure>
+      </div>
+      <p class="muted" style="margin:14px 0 0;font-size:13px;color:#9c8c5c;font-style:italic">E whakawātea ana ki te arotake whakamāori a ngā kaikōrero taketake.</p>
+    </div>
+
+    <div class="section-head reveal" style="margin-top:90px">
+      <div>
+        <div class="kicker" style="color:#c9a84c">Mō Ngā Kua Puta</div>
+        <h2 style="color:#f2eed4;font-size:clamp(30px,4.4vw,52px)">Whakaotia te Akoranga. Pānuihia te Mahi.</h2>
+        <div class="rule" style="margin-top:14px;background:#c9a84c"></div>
+      </div>
+      <p class="right" style="color:#d9d4be">He tauira pānui pāpāho, he tiwhikete whakaotinga, me ngā kāri tohatoha mō ngā kua puta, i ngā reo e toru. Mō ngā tāngata katoa kua whakaoti i a Hei Toa AI, e hiahia ana ki te kī atu ki tō rātou wāhi mahi, ki tō rātou uniana, ki tō rātou putanga.</p>
+    </div>
+
+    <div class="kit-bar reveal" style="margin-top:20px;background:#0a0a0a;border:1px solid #c9a84c">
+      <div class="kit-bar-text">
+        <div class="kicker" style="color:#c9a84c">POUAKA 02 · PĀPĀHO KUA PUTA</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:34px;margin:6px 0 0;letter-spacing:.04em;color:#f2eed4">HEI TOA AI · POUAKA PĀPĀHO KUA PUTA.ZIP</h3>
+        <p class="muted" style="margin:8px 0 0;font-size:14.5px;color:#d9d4be">Tiwhikete · 9 kāri tohatoha (3 reo × 3 rahi) · tauira pānui pāpāho · README · ~610 KB</p>
+      </div>
+      <a class="btn" href="assets/media-kit/ai-warrior-graduate-media-kit.zip" download style="background:#c0280a;border-color:#c0280a;color:#f2eed4">Tikiake i te Pouaka Kua Puta ↓</a>
+    </div>
+
+    <div class="kit-grid reveal" style="margin-top:40px">
+      <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+        <a href="assets/media-kit/certificate-blank.png" download><img src="assets/media-kit/certificate-blank.png" alt="Tiwhikete whakaotinga (wātea)" loading="lazy" /></a>
+        <figcaption style="color:#d9d4be"><span>Tiwhikete · A4 whakapae</span><strong style="color:#f2eed4">2480 × 1748</strong></figcaption>
+      </figure>
+      <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+        <a href="assets/media-kit/grad-share-en-li-announce-1200x627.png" download><img src="assets/media-kit/grad-share-en-li-announce-1200x627.png" alt="Tohatoha kua puta · EN · LinkedIn" loading="lazy" /></a>
+        <figcaption style="color:#d9d4be"><span>Tohatoha Kua Puta · EN · LinkedIn</span><strong style="color:#f2eed4">1200 × 627</strong></figcaption>
+      </figure>
+      <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+        <a href="assets/media-kit/grad-share-mi-tw-card-1600x900.png" download><img src="assets/media-kit/grad-share-mi-tw-card-1600x900.png" alt="Tohatoha kua puta · MI · Twitter" loading="lazy" /></a>
+        <figcaption style="color:#d9d4be"><span>Tohatoha Kua Puta · MI · Twitter</span><strong style="color:#f2eed4">1600 × 900</strong></figcaption>
+      </figure>
+      <figure class="kit-card" style="background:#0a0a0a;border-color:rgba(201,168,76,.3)">
+        <a href="assets/media-kit/grad-share-tl-ig-square-1080x1080.png" download><img src="assets/media-kit/grad-share-tl-ig-square-1080x1080.png" alt="Tohatoha kua puta · TL · Instagram" loading="lazy" /></a>
+        <figcaption style="color:#d9d4be"><span>Tohatoha Kua Puta · TL · Instagram</span><strong style="color:#f2eed4">1080 × 1080</strong></figcaption>
+      </figure>
+    </div>
+
+    <p class="reveal" style="margin-top:30px;font-size:14px;color:#9c8c5c;line-height:1.7">Whakatuwheratia te tiwhikete, ngā kāri tohatoha rānei i Preview, Pixelmator, Photoshop, GIMP, Figma, Canva rānei. Whakakapia <code style="background:#1a1a1a;padding:2px 6px;border-radius:3px;color:#c9a84c">{NAME}</code> me <code style="background:#1a1a1a;padding:2px 6px;border-radius:3px;color:#c9a84c">{DATE}</code> ki ōu ake. Tāia te tiwhikete i te A4 whakapae, 300 dpi. Kei roto i te ZIP te tauira pānui pāpāho — whakakīa ōu ake mōhiohio, tukuna ki tētahi pepa hapori, ki te pānui uniana, ki te tuhinga Substack rānei.</p>
+
+    <p class="reveal" style="margin-top:20px;font-size:13px;color:#7a7060;font-style:italic">Hei whakamaharatanga ki a Ralph Hotere (1931–2013) — Te Aupōuri, Te Rarawa — o Port Chalmers / Aramoana / Ōtepoti. Ka tangohia te āhua mai i āna pikitia papa pango, te rino kōpiko o āna whakahē i Aramoana, me te momotuhi pukumahi o āna mahi kupu. Ko te kaupapa, nā tātou.</p>
+  </div>
+</section>
+
+
+<!-- CTA BANNER -->
+<section class="banner" style="border-bottom:none">
+  <div class="wrap">
+    <h2 class="reveal">Ko Te Taputapu Mōrearea Rawa Atu<br/>Ko Te Hinengaro Kua Whakangungua.</h2>
+    <p class="reveal">E ono ngā wāhanga. E ono ngā kaiwhakaaro. Kotahi te mahi. Tīmataria te akoranga koreutu — uru hōhonu mō te utu o te kawhe flat white.</p>
+    <a class="btn reveal" href="https://kiwidialectic.com/subscribe" target="_blank" rel="noopener">Hei Toa AI →</a>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <div class="lockup">
+      <svg viewBox="0 0 200 200" width="28" height="28" aria-hidden="true">
+        <rect width="200" height="200" fill="#0a0a0a"/>
+        <path fill="#d7261e" d="M100 22 c 42 0 70 32 70 72 c 0 38 -28 64 -62 64 c -32 0 -54 -22 -54 -50 c 0 -26 20 -44 44 -44 c 22 0 36 14 36 32 c 0 16 -12 26 -26 26 c -12 0 -20 -8 -20 -18 c 0 -8 6 -14 14 -14 c 6 0 10 4 10 9 L 112 105 c 0 -10 -8 -16 -18 -16 c -14 0 -24 10 -24 24 c 0 18 14 30 32 30 c 22 0 38 -16 38 -38 c 0 -26 -20 -44 -46 -44 c -30 0 -52 22 -52 52 c 0 32 24 56 58 56 c 38 0 66 -28 66 -66 c 0 -44 -32 -76 -76 -76 c -10 0 -18 1 -26 3 L 100 22 Z"/>
+      </svg>
+      <span style="font-family:'Bebas Neue';letter-spacing:.18em">© KD · KIWI DIALECTIC · ŌTEPOTI</span>
+    </div>
+    <div>
+      <a href="index.html" lang="en">English</a>
+      <a href="https://kiwidialectic.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://te-pa.org" target="_blank" rel="noopener">Te Pā Tūwatawata</a>
+      <a href="https://robertmccallnz.github.io/ai-literacy-for-families/" target="_blank" rel="noopener">Mātauranga AI mō ngā Whānau</a>
+      <a href="https://robertmccallnz.github.io/kiwidialecticcalendar-/badges/" target="_blank" rel="noopener">Maramataka me ngā Tohu</a>
+      <a href="https://twitter.com/" target="_blank" rel="noopener">X</a>
+      <a href="mailto:hello@kiwidialectic.com">Īmēra</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Theme toggle (persisted)
+  (function(){
+    const root = document.documentElement;
+    const saved = localStorage.getItem('kd-theme');
+    if(saved){ root.setAttribute('data-theme', saved); }
+    document.getElementById('theme-toggle').addEventListener('click', function(){
+      const cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('kd-theme', cur);
+    });
+  })();
+
+  // Mobile menu
+  (function(){
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', function(){
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  })();
+
+  // Copy buttons for caption prompts
+  (function(){
+    document.querySelectorAll('.prompt .copy-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var card = btn.closest('.prompt');
+        var txt  = card.getAttribute('data-copy') || '';
+        function flash(){
+          var prev = btn.textContent;
+          btn.textContent = 'Kua tāruatia';
+          btn.classList.add('copied');
+          setTimeout(function(){ btn.textContent = prev; btn.classList.remove('copied'); }, 1400);
+        }
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(txt).then(flash);
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = txt; document.body.appendChild(ta);
+          ta.select(); try{ document.execCommand('copy'); }catch(e){}
+          document.body.removeChild(ta);
+          flash();
+        }
+      });
+    });
+  })();
+
+  // Scroll reveal
+  (function(){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  })();
+</script>
+
+    <!-- Cloudflare Web Analytics: privacy-friendly, no cookies. Token set via repo variable CF_ANALYTICS_TOKEN at build time, or replace inline. -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "CF_ANALYTICS_TOKEN"}'></script>
+</body>
+</html>

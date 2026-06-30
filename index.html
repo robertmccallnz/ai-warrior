@@ -10,6 +10,8 @@
 <meta property="og:description" content="Train the mind. Arm the class. A course by The Kiwi Dialectic." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/hero-poster.svg" />
+<link rel="alternate" hreflang="en" href="index.html" />
+<link rel="alternate" hreflang="mi" href="index-mi.html" />
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -68,6 +70,8 @@
   nav.links a:hover{color:var(--red)}
   .nav-actions{display:flex;align-items:center;gap:10px}
   .icon-btn{background:transparent;color:var(--fg);border:1px solid var(--line);padding:8px 10px;cursor:pointer;font-size:14px;border-radius:2px}
+  .lang-switch{font-family:'Bebas Neue',sans-serif;letter-spacing:0.18em;font-size:12px;padding:8px 10px;border:1px solid var(--line);text-decoration:none;color:var(--fg)}
+  .lang-switch:hover{border-color:var(--red);color:var(--red)}
   .hamburger{display:none;background:transparent;border:1px solid var(--line);color:var(--fg);padding:8px 10px;cursor:pointer}
 
   /* TICKER */
@@ -267,6 +271,7 @@
     </nav>
 
     <div class="nav-actions">
+      <a class="lang-switch" href="index-mi.html" lang="mi" title="Pānuihia i te reo Māori">MI</a>
       <button class="icon-btn" id="theme-toggle" aria-label="Toggle light or dark mode" title="Toggle theme">◐</button>
       <a class="btn" href="https://kiwidialectic.com/subscribe" target="_blank" rel="noopener">Subscribe</a>
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">≡</button>
@@ -274,6 +279,7 @@
   </div>
 
   <div class="mobile-menu" id="mobile-menu">
+    <a href="index-mi.html" lang="mi">Te Reo Māori (MI)</a>
     <a href="#manifesto">Manifesto</a>
     <a href="#modules">Modules</a>
     <a href="#thinkers">Thinkers</a>
@@ -790,6 +796,7 @@
       <a href="https://robertmccallnz.github.io/ai-literacy-for-families/" target="_blank" rel="noopener">AI Literacy for Families</a>
       <a href="https://robertmccallnz.github.io/kiwidialecticcalendar-/badges/" target="_blank" rel="noopener">Calendar &amp; Badges</a>
       <a href="https://twitter.com/" target="_blank" rel="noopener">X</a>
+      <a href="index-mi.html" lang="mi">Te Reo Māori</a>
       <a href="mailto:hello@kiwidialectic.com">Email</a>
     </div>
   </div>
@@ -852,5 +859,8 @@
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   })();
 </script>
+
+    <!-- Cloudflare Web Analytics: privacy-friendly, no cookies. Token set via repo variable CF_ANALYTICS_TOKEN at build time, or replace inline. -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "CF_ANALYTICS_TOKEN"}'></script>
 </body>
 </html>

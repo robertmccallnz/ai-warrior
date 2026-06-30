@@ -1,0 +1,49 @@
+name = "ai-warrior-tutor"
+main = "src/index.ts"
+compatibility_date = "2025-06-01"
+account_id = "063ea8fc4f5e84d72b9a09933215d0e1"
+
+# Workers AI binding — Cloudflare's on-edge model runtime.
+# No API key needed; billed to this account (very cheap, large free tier).
+[ai]
+binding = "AI"
+
+# KV namespace for per-subscriber monthly quota counters.
+# Create with: wrangler kv:namespace create QUOTA
+# Then paste the returned id below.
+[[kv_namespaces]]
+binding = "QUOTA"
+id = "REPLACE_WITH_KV_ID_AFTER_FIRST_CREATE"
+
+# Public config — safe to commit. Override via `wrangler.toml` per environment.
+[vars]
+# AI Gateway: leave blank to call Workers AI directly. Set to your gateway slug
+# after creating one in the dashboard to get logging/caching/rate-limit telemetry.
+AI_GATEWAY_NAME = "ai-warrior-gateway"
+# Default model for the course tutor (Socratic). Llama 3.1 70B is the strongest
+# Workers AI option for nuanced discussion. Free tier covers ~10k req/day.
+TUTOR_MODEL = "@cf/meta/llama-3.1-70b-instruct"
+# Default model for the reo helper. Smaller/faster — fine for translation help.
+REO_MODEL = "@cf/meta/llama-3.1-8b-instruct"
+# Per-subscriber monthly quota (Pro). 0 = unlimited.
+QUOTA_PRO = "1000"
+# Per-subscriber monthly quota (Free / anonymous).
+QUOTA_FREE = "20"
+# Perplexity referral link shown when quota is exhausted.
+# Paste your real referral code from perplexity.ai/settings/account → Refer a friend.
+PPLX_REFERRAL_URL = "https://www.perplexity.ai/pro?referral_code=REPLACE_ME"
+# Upgrade page (Substack paid tier).
+UPGRADE_URL = "https://kiwidialectic.com/subscribe"
+# Allowed CORS origins (comma-separated).
+ALLOWED_ORIGINS = "https://robertmccallnz.github.io,https://kiwidialectic.com,http://localhost:8000"
+
+# Secrets — set with `wrangler secret put NAME` (never committed):
+#   ANTHROPIC_API_KEY   (only needed if you switch tutor to Claude later)
+#   OPENAI_API_KEY      (only needed if you add OpenAI fallback)
+#   SUBSTACK_API_KEY    (only needed for paid-subscriber verification)
+
+# Production route: bind a custom domain or use the workers.dev subdomain.
+# Uncomment + edit when ready:
+# [[routes]]
+# pattern = "tutor.kiwidialectic.com/*"
+# zone_name = "kiwidialectic.com"
