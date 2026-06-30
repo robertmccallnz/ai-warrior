@@ -57,7 +57,13 @@
   .links{display:flex;gap:22px;align-items:center}
   .links a{text-decoration:none;color:var(--fg);font-weight:500;font-size:14px;letter-spacing:0.04em;opacity:.85}
   .links a:hover, .links a.active{opacity:1;color:var(--red)}
-  .nav-actions{display:flex;align-items:center;gap:10px}
+  .nav-actions{display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
+  @media (max-width:1100px){
+    .nav-actions .lang-switch:nth-of-type(n+3){display:none}
+  }
+  @media (max-width:760px){
+    .nav-actions .lang-switch{display:none}
+  }
   .icon-btn{background:transparent;border:1px solid var(--line);color:var(--fg);width:38px;height:38px;cursor:pointer;font-size:18px}
   .lang-switch{font-family:'Bebas Neue',sans-serif;letter-spacing:0.18em;font-size:12px;padding:8px 10px;border:1px solid var(--line);text-decoration:none;color:var(--fg)}
   .lang-switch:hover{border-color:var(--red);color:var(--red)}
@@ -172,6 +178,10 @@
     <div class="nav-actions">
       <a class="lang-switch" href="partners.html" lang="en" title="Read in English">EN</a>
       <a class="lang-switch" href="partners-mi.html" lang="mi" title="Pānuihia i te reo Māori">MI</a>
+      <a class="lang-switch" href="partners-pt.html" lang="pt-BR" title="Leia em português">PT</a>
+      <a class="lang-switch" href="partners-es-mx.html" lang="es-MX" title="Leer en español (México)">ES-MX</a>
+      <a class="lang-switch" href="partners-fr.html" lang="fr" title="Lire en français">FR</a>
+      <a class="lang-switch" href="partners-de.html" lang="de" title="Auf Deutsch lesen">DE</a>
       <button class="icon-btn" id="theme-toggle" aria-label="Cambiar tema claro u oscuro" title="Cambiar tema">◐</button>
       <a class="btn" href="https://kiwidialectic.com/subscribe" target="_blank" rel="noopener">Suscribirse</a>
       <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">≡</button>

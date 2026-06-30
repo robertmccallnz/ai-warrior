@@ -71,7 +71,13 @@
   .brand .name{font-family:'Bebas Neue',sans-serif;letter-spacing:0.14em;font-size:20px}
   .brand .name .red{color:var(--red)}
   nav.links{display:none}
-  .nav-actions{display:flex;align-items:center;gap:10px}
+  .nav-actions{display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
+  @media (max-width:1100px){
+    .nav-actions .lang-switch:nth-of-type(n+3){display:none}
+  }
+  @media (max-width:760px){
+    .nav-actions .lang-switch{display:none}
+  }
   .icon-btn{background:transparent;color:var(--fg);border:1px solid var(--line);padding:8px 10px;cursor:pointer;font-size:14px;border-radius:2px}
   .lang-switch{font-family:'Bebas Neue',sans-serif;letter-spacing:0.18em;font-size:12px;padding:8px 10px;border:1px solid var(--line);text-decoration:none;color:var(--fg)}
   .lang-switch:hover{border-color:var(--red);color:var(--red)}
@@ -285,7 +291,11 @@
 
     <div class="nav-actions">
       <a class="lang-switch" href="index.html" lang="en" title="Read in English">EN</a>
-      <a class="lang-switch" href="index-pt.html" lang="pt-BR" title="Pānuihia i te reo Pohitikara">PT</a>
+      <a class="lang-switch" href="index-pt.html" lang="pt-BR" title="Leia em português">PT</a>
+      <a class="lang-switch" href="index-es.html" lang="es" title="Leer en español">ES</a>
+      <a class="lang-switch" href="index-es-mx.html" lang="es-MX" title="Leer en español (México)">ES-MX</a>
+      <a class="lang-switch" href="index-fr.html" lang="fr" title="Lire en français">FR</a>
+      <a class="lang-switch" href="index-de.html" lang="de" title="Auf Deutsch lesen">DE</a>
       <button class="icon-btn" id="theme-toggle" aria-label="Whakaaro kanapa, pōuri rānei" title="Whakawhiti āhua">◐</button>
       <a class="btn" href="https://kiwidialectic.com/subscribe" target="_blank" rel="noopener">Tuhinga Mai</a>
       <button class="hamburger" id="hamburger" aria-label="Whakatūwhera tahua" aria-controls="mobile-menu" aria-expanded="false"><span class="bars"><span></span></span></button>
