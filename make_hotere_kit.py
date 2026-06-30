@@ -25,7 +25,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 # ─── OUTPUT DIRS ─────────────────────────────────────────────────────────────
 BASE_OUT = "/home/user/workspace/ai-warrior/assets/social-kit-hotere"
-for lang in ("en", "mi", "tl"):
+for lang in ("en", "mi", "tl", "pt"):
     os.makedirs(os.path.join(BASE_OUT, lang), exist_ok=True)
 
 # ─── PALETTE ─────────────────────────────────────────────────────────────────
@@ -79,12 +79,20 @@ HEADLINES = {
         "banner": ["SANAYIN ANG ISIP · ARMASAN ANG URI · MAGING MANDIRIGMA NG AI"],
         "avatar": ["KD"],
     },
+    "pt": {
+        "wide":   ["TREINE A MENTE.", "ARME A CLASSE."],
+        "square": ["TREINE A MENTE.", "ARME A CLASSE."],
+        "tall":   ["TREINE", "A MENTE.", "ARME A", "CLASSE."],
+        "banner": ["TREINE A MENTE · ARME A CLASSE · GUERREIRO DA IA"],
+        "avatar": ["KD"],
+    },
 }
 
 SUBLINES = {
     "en": "AI Warrior · Six modules. Six thinkers. One praxis. · kiwidialectic.com",
     "mi": "Toa AI · E ono ngā wāhanga. E ono ngā mātanga. Kotahi te tikanga whakatinana.",
     "tl": "Mandirigma ng AI · Anim na modyul. Anim na nag-isip. Isang praksis.",
+    "pt": "Guerreiro da IA · Seis módulos. Seis pensadores. Uma práxis. · kiwidialectic.com",
 }
 
 MODULE_ROMAN = ["I", "II", "III", "IV", "V", "VI"]
