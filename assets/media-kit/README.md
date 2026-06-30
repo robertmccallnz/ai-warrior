@@ -20,6 +20,21 @@ apply for jobs, or issue a local press release.
 | `grad-share-tl-li-announce-1200x627.png` | LinkedIn announcement card — Tagalog (1200×627 px) |
 | `grad-share-tl-tw-card-1600x900.png` | Twitter / X share card — Tagalog (1600×900 px) |
 | `grad-share-tl-ig-square-1080x1080.png` | Instagram square share card — Tagalog (1080×1080 px) |
+| `grad-share-pt-li-announce-1200x627.png` | LinkedIn announcement card — Portuguese pt-BR (1200×627 px) |
+| `grad-share-pt-tw-card-1600x900.png` | Twitter / X share card — Portuguese pt-BR (1600×900 px) |
+| `grad-share-pt-ig-square-1080x1080.png` | Instagram square share card — Portuguese pt-BR (1080×1080 px) |
+| `grad-share-es-li-announce-1200x627.png` | LinkedIn announcement card — Spanish es-ES (1200×627 px) |
+| `grad-share-es-tw-card-1600x900.png` | Twitter / X share card — Spanish es-ES (1600×900 px) |
+| `grad-share-es-ig-square-1080x1080.png` | Instagram square share card — Spanish es-ES (1080×1080 px) |
+| `grad-share-es-mx-li-announce-1200x627.png` | LinkedIn announcement card — Spanish es-MX (1200×627 px) |
+| `grad-share-es-mx-tw-card-1600x900.png` | Twitter / X share card — Spanish es-MX (1600×900 px) |
+| `grad-share-es-mx-ig-square-1080x1080.png` | Instagram square share card — Spanish es-MX (1080×1080 px) |
+| `grad-share-fr-li-announce-1200x627.png` | LinkedIn announcement card — French (1200×627 px) |
+| `grad-share-fr-tw-card-1600x900.png` | Twitter / X share card — French (1600×900 px) |
+| `grad-share-fr-ig-square-1080x1080.png` | Instagram square share card — French (1080×1080 px) |
+| `grad-share-de-li-announce-1200x627.png` | LinkedIn announcement card — German (1200×627 px) |
+| `grad-share-de-tw-card-1600x900.png` | Twitter / X share card — German (1600×900 px) |
+| `grad-share-de-ig-square-1080x1080.png` | Instagram square share card — German (1080×1080 px) |
 | `press-release-template.md` | Paste-ready press release template in Markdown. Fill in {NAME}, {DATE}, {CITY, COUNTRY}, and your quote. |
 | `README.md` | This file. |
 
@@ -60,6 +75,36 @@ or any heavy condensed sans-serif. All-caps, ivory (#F2EED4) or near-white.
 > Mandirigma ng AI · nagtapos sa The Kiwi Dialectic
 > Anim na modyul. Anim na nag-isip. Isang praksis.
 > https://robertmccallnz.github.io/ai-warrior/
+
+### Português (pt-BR)
+> Treinei a mente. Agora armo a classe.
+> Guerreiro da IA · graduado do The Kiwi Dialectic
+> Seis módulos. Seis pensadores. Uma práxis.
+> https://robertmccallnz.github.io/ai-warrior/index-pt.html
+
+### Español (es-ES)
+> Entrené la mente. Ahora armo a la clase.
+> Guerrero de la IA · graduado de The Kiwi Dialectic
+> Seis módulos. Seis pensadores. Una praxis.
+> https://robertmccallnz.github.io/ai-warrior/index-es.html
+
+### Español (es-MX)
+> Entrené la mente. Ahora armo a la clase.
+> Guerrero de la IA · graduado de The Kiwi Dialectic
+> Seis módulos. Seis pensadores. Una praxis.
+> https://robertmccallnz.github.io/ai-warrior/index-es-mx.html
+
+### Français
+> J’ai formé l’esprit. Maintenant j’arme la classe.
+> Guerrier de l’IA · diplômé de The Kiwi Dialectic
+> Six modules. Six penseurs. Une praxis.
+> https://robertmccallnz.github.io/ai-warrior/index-fr.html
+
+### Deutsch
+> Ich habe den Geist geschult. Jetzt bewaffne ich die Klasse.
+> KI-Krieger · Absolvent von The Kiwi Dialectic
+> Sechs Module. Sechs Denker. Eine Praxis.
+> https://robertmccallnz.github.io/ai-warrior/index-de.html
 
 ---
 

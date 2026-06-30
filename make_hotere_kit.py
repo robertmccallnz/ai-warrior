@@ -25,7 +25,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 # ─── OUTPUT DIRS ─────────────────────────────────────────────────────────────
 BASE_OUT = "/home/user/workspace/ai-warrior/assets/social-kit-hotere"
-for lang in ("en", "mi", "tl", "pt"):
+for lang in ("en", "mi", "tl", "pt", "es", "es-mx", "fr", "de"):
     os.makedirs(os.path.join(BASE_OUT, lang), exist_ok=True)
 
 # ─── PALETTE ─────────────────────────────────────────────────────────────────
@@ -86,6 +86,34 @@ HEADLINES = {
         "banner": ["TREINE A MENTE · ARME A CLASSE · GUERREIRO DA IA"],
         "avatar": ["KD"],
     },
+    "es": {
+        "wide":   ["ENTRENA LA MENTE.", "ARMA A LA CLASE."],
+        "square": ["ENTRENA LA MENTE.", "ARMA A LA CLASE."],
+        "tall":   ["ENTRENA", "LA MENTE.", "ARMA A LA", "CLASE."],
+        "banner": ["ENTRENA LA MENTE · ARMA A LA CLASE · GUERRERO DE LA IA"],
+        "avatar": ["KD"],
+    },
+    "es-mx": {
+        "wide":   ["ENTRENA LA MENTE.", "ARMA A LA CLASE."],
+        "square": ["ENTRENA LA MENTE.", "ARMA A LA CLASE."],
+        "tall":   ["ENTRENA", "LA MENTE.", "ARMA A LA", "CLASE."],
+        "banner": ["ENTRENA LA MENTE · ARMA A LA CLASE · GUERRERO DE LA IA"],
+        "avatar": ["KD"],
+    },
+    "fr": {
+        "wide":   ["FORME L’ESPRIT.", "ARME LA CLASSE."],
+        "square": ["FORME L’ESPRIT.", "ARME LA CLASSE."],
+        "tall":   ["FORME", "L’ESPRIT.", "ARME LA", "CLASSE."],
+        "banner": ["FORME L’ESPRIT · ARME LA CLASSE · GUERRIER DE L’IA"],
+        "avatar": ["KD"],
+    },
+    "de": {
+        "wide":   ["SCHULE DEN GEIST.", "BEWAFFNE DIE KLASSE."],
+        "square": ["SCHULE DEN GEIST.", "BEWAFFNE DIE KLASSE."],
+        "tall":   ["SCHULE", "DEN GEIST.", "BEWAFFNE", "DIE KLASSE."],
+        "banner": ["SCHULE DEN GEIST · BEWAFFNE DIE KLASSE · KI-KRIEGER"],
+        "avatar": ["KD"],
+    },
 }
 
 SUBLINES = {
@@ -93,6 +121,10 @@ SUBLINES = {
     "mi": "Toa AI · E ono ngā wāhanga. E ono ngā mātanga. Kotahi te tikanga whakatinana.",
     "tl": "Mandirigma ng AI · Anim na modyul. Anim na nag-isip. Isang praksis.",
     "pt": "Guerreiro da IA · Seis módulos. Seis pensadores. Uma práxis. · kiwidialectic.com",
+    "es": "Guerrero de la IA · Seis módulos. Seis pensadores. Una praxis. · kiwidialectic.com",
+    "es-mx": "Guerrero de la IA · Seis módulos. Seis pensadores. Una praxis. · kiwidialectic.com",
+    "fr": "Guerrier de l’IA · Six modules. Six penseurs. Une praxis. · kiwidialectic.com",
+    "de": "KI-Krieger · Sechs Module. Sechs Denker. Eine Praxis. · kiwidialectic.com",
 }
 
 MODULE_ROMAN = ["I", "II", "III", "IV", "V", "VI"]
@@ -438,7 +470,7 @@ def main():
     print("Building Hotere-style social kit…")
     count = 0
     seed_base = 1337
-    for lang in ("en", "mi", "tl"):
+    for lang in ("en", "mi", "tl", "pt", "es", "es-mx", "fr", "de"):
         print(f"\n  Language: {lang}")
         for (w, h, plat_key, fmt_key, fname) in SIZES:
             out_path = os.path.join(BASE_OUT, lang, fname)
