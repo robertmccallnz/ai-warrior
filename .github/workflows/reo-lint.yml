@@ -1,0 +1,67 @@
+name: Te reo Māori lint
+
+# Runs on every PR that touches HTML files, the linter, or the glossary.
+# Scans only te reo pages (filename ends in -mi.html, or <html lang="mi">),
+# then posts (or updates) a single PR comment with a QA score and the lines
+# a native-speaker reviewer should check.
+#
+# The comment is keyed by the header text "🪶 Te reo Māori lint report" so
+# subsequent runs replace the existing comment instead of spamming the thread.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '**.html'
+      - 'scripts/reo-lint.py'
+      - 'scripts/reo-glossary.json'
+      - '.github/workflows/reo-lint.yml'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  reo-lint:
+    name: Scan te reo pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          # Full history so we can diff against the base branch.
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Ensure base ref is available locally
+        run: git fetch origin "${{ github.base_ref }}" --depth=1 || true
+
+      - name: Run reo-lint on changed files
+        run: |
+          python scripts/reo-lint.py \
+            --changed "origin/${{ github.base_ref }}" \
+            --pr-comment \
+            --output /tmp/reo-comment.md
+          echo "--- Comment preview ---"
+          cat /tmp/reo-comment.md
+          echo "-----------------------"
+
+      - name: Find existing reo-lint comment
+        id: fc
+        uses: peter-evans/find-comment@v3
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '🪶 Te reo Māori lint report'
+
+      - name: Post or update PR comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: /tmp/reo-comment.md
+          edit-mode: replace
