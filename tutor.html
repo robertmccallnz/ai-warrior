@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>AI Warrior — Tutor & Reo Helper (preview)</title>
+  <link rel="alternate" hreflang="en" href="https://robertmccallnz.github.io/ai-warrior/tutor.html" />
+  <link rel="alternate" hreflang="mi" href="https://robertmccallnz.github.io/ai-warrior/tutor-mi.html" />
+  <style>
+    :root {
+      --bg: #f7f6f2; --surface: #fbfbf9; --border: #d4d1ca;
+      --text: #28251d; --muted: #7a7974; --primary: #01696f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    h1 { font-size: 28px; margin: 0 0 4px; font-weight: 600; letter-spacing: -0.01em; }
+    .lead { color: var(--muted); margin: 0 0 32px; max-width: 720px; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .card h2 { margin: 0 0 4px; font-size: 18px; }
+    .card .desc { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
+    ai-warrior-widget { flex: 1; }
+    .notes {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 22px;
+      font-size: 14px;
+    }
+    .notes h3 { margin: 0 0 8px; font-size: 15px; }
+    .notes code {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    .notes a { color: var(--primary); }
+    .pill {
+      display: inline-block;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #171614; --surface: #1c1b19; --border: #393836;
+        --text: #cdccca; --muted: #797876; --primary: #4f98a3;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="header">
+      <div>
+        <h1>AI Warrior — tutor &amp; reo helper <span class="pill">preview</span></h1>
+        <p class="lead">Two widgets powered by one Cloudflare Worker, routed through AI Gateway, running on Workers AI at the edge. Quota-tiered: free for casual visitors, generous for Kiwi Dialectic subscribers, with a Perplexity Pro referral when the meter runs out.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Reo Helper</h2>
+        <p class="desc">Translation between English and te reo Māori, macron suggestions, phrasing alternatives. Uses Llama 3.1 8B for speed.</p>
+        <ai-warrior-widget
+          mode="reo"
+          endpoint="WORKER_ENDPOINT"></ai-warrior-widget>
+      </div>
+
+      <div class="card">
+        <h2>Course Tutor</h2>
+        <p class="desc">Socratic discussion of Gramsci, Kropotkin, Graeber, Freire, Deleuze, Bakunin — connected to material conditions. Uses Llama 3.1 70B for nuance.</p>
+        <ai-warrior-widget
+          mode="tutor"
+          endpoint="WORKER_ENDPOINT"></ai-warrior-widget>
+      </div>
+    </div>
+
+    <div class="notes">
+      <h3>How this works</h3>
+      <p>
+        Both widgets POST to a Cloudflare Worker (<code>/worker</code> in this repo). The Worker routes the request through your AI Gateway (<code>ai-warrior-gateway</code>) and into Workers AI. Your API keys never touch the browser. Per-IP and per-subscriber monthly quotas are tracked in KV.
+      </p>
+      <p>
+        The endpoint URL above is substituted at deploy time by the GitHub Pages workflow using the <code>WORKER&#95;ENDPOINT</code> repo variable — see <a href="https://github.com/robertmccallnz/ai-warrior/blob/main/worker/README.md">worker/README.md</a> for the full setup.
+      </p>
+    </div>
+  </main>
+
+  <script type="module" src="assets/js/ai-warrior-widget.js"></script>
+
+  <!-- Cloudflare Web Analytics: privacy-friendly, no cookies. Token set via repo variable CF_ANALYTICS_TOKEN at build time, or replace inline. -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "CF_ANALYTICS_TOKEN"}'></script>
+</body>
+</html>

@@ -33,6 +33,25 @@ jobs:
             echo "CF_ANALYTICS_TOKEN repo variable not set — stripping beacon to avoid 'CF_ANALYTICS_TOKEN' literal in deploy."
             grep -rl 'CF_ANALYTICS_TOKEN' --include='*.html' . | xargs -r sed -i "/cloudflareinsights/d"
           fi
+      - name: Inject AI Worker endpoint
+        env:
+          WORKER_URL: ${{ vars.WORKER_ENDPOINT }}
+        run: |
+          if [ -n "$WORKER_URL" ]; then
+            ESCAPED=$(printf '%s\n' "$WORKER_URL" | sed 's/[\/&]/\\&/g')
+            # Only substitute inside an endpoint="..." attribute, never in prose/<code>.
+            grep -rl 'endpoint="WORKER_ENDPOINT"' --include='*.html' . \
+              | xargs -r sed -i "s/endpoint=\"WORKER_ENDPOINT\"/endpoint=\"$ESCAPED\"/g"
+            echo "Injected Worker endpoint into HTML files."
+          else
+            echo "WORKER_ENDPOINT repo variable not set — tutor.html widgets will show an error until configured."
+          fi
+      - name: Exclude Worker source from Pages artifact
+        run: |
+          # The /worker directory contains TypeScript source for the Cloudflare Worker.
+          # It is deployed separately via wrangler and must not be published as static.
+          rm -rf worker
+          echo "Removed /worker from Pages artifact."
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
