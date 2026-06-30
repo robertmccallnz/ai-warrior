@@ -65,14 +65,21 @@
   .brand svg{width:34px;height:34px}
   .brand .name{font-family:'Bebas Neue',sans-serif;letter-spacing:0.14em;font-size:20px}
   .brand .name .red{color:var(--red)}
-  nav.links{display:flex;align-items:center;gap:26px}
-  nav.links a{text-decoration:none;font-weight:600;font-size:14px;letter-spacing:0.04em}
-  nav.links a:hover{color:var(--red)}
+  nav.links{display:none}
   .nav-actions{display:flex;align-items:center;gap:10px}
   .icon-btn{background:transparent;color:var(--fg);border:1px solid var(--line);padding:8px 10px;cursor:pointer;font-size:14px;border-radius:2px}
   .lang-switch{font-family:'Bebas Neue',sans-serif;letter-spacing:0.18em;font-size:12px;padding:8px 10px;border:1px solid var(--line);text-decoration:none;color:var(--fg)}
   .lang-switch:hover{border-color:var(--red);color:var(--red)}
-  .hamburger{display:none;background:transparent;border:1px solid var(--line);color:var(--fg);padding:8px 10px;cursor:pointer}
+  .hamburger{display:inline-flex;align-items:center;justify-content:center;width:42px;height:38px;background:transparent;border:1px solid var(--line);color:var(--fg);cursor:pointer;border-radius:2px;padding:0;transition:border-color .15s,color .15s}
+  .hamburger:hover{border-color:var(--red);color:var(--red)}
+  .hamburger .bars{display:inline-block;position:relative;width:18px;height:12px}
+  .hamburger .bars::before,.hamburger .bars::after,.hamburger .bars span{content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;transition:transform .25s ease,opacity .2s ease,top .25s ease}
+  .hamburger .bars::before{top:0}
+  .hamburger .bars span{top:5px}
+  .hamburger .bars::after{top:10px}
+  .hamburger[aria-expanded="true"] .bars::before{top:5px;transform:rotate(45deg)}
+  .hamburger[aria-expanded="true"] .bars span{opacity:0}
+  .hamburger[aria-expanded="true"] .bars::after{top:5px;transform:rotate(-45deg)}
 
   /* TICKER */
   .ticker{background:var(--red);color:#fff;overflow:hidden;border-top:1px solid #000;border-bottom:1px solid #000}
@@ -223,17 +230,18 @@
     .pillars{grid-template-columns:1fr 1fr}
     .tools{grid-template-columns:repeat(2,1fr)}
     .about-grid{grid-template-columns:1fr}
-    nav.links{display:none}
-    .hamburger{display:inline-block}
   }
   @media (max-width: 620px){
     .manifesto-grid,.courses,.pillars,.tools{grid-template-columns:1fr}
     .thinkers{grid-template-columns:repeat(2,1fr)}
     section{padding:64px 0}
   }
-  .mobile-menu{display:none;border-bottom:1px solid var(--line);background:var(--bg-2)}
-  .mobile-menu.open{display:block}
-  .mobile-menu a{display:block;padding:14px 24px;text-decoration:none;color:var(--fg);font-weight:600;border-top:1px solid var(--line)}
+  .mobile-menu{position:absolute;left:0;right:0;top:100%;z-index:50;max-height:0;overflow:hidden;border-bottom:0;background:var(--bg-2);transition:max-height .3s ease,border-color .3s ease;box-shadow:0 12px 24px rgba(0,0,0,0.18)}
+  .mobile-menu.open{max-height:90vh;border-bottom:1px solid var(--line);overflow-y:auto}
+  .mobile-menu a{display:block;padding:14px 24px;text-decoration:none;color:var(--fg);font-weight:600;border-top:1px solid var(--line);letter-spacing:0.02em;transition:color .15s,background .15s}
+  .mobile-menu a:first-child{border-top:0}
+  .mobile-menu a:hover{color:var(--red);background:var(--bg)}
+  header.site{position:relative}
 
   /* utility */
   .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
@@ -274,7 +282,7 @@
       <a class="lang-switch" href="index.html" lang="en" title="Read in English">EN</a>
       <button class="icon-btn" id="theme-toggle" aria-label="Whakaaro kanapa, pōuri rānei" title="Whakawhiti āhua">◐</button>
       <a class="btn" href="https://kiwidialectic.com/subscribe" target="_blank" rel="noopener">Tuhinga Mai</a>
-      <button class="hamburger" id="hamburger" aria-label="Whakatūwhera tahua" aria-expanded="false">≡</button>
+      <button class="hamburger" id="hamburger" aria-label="Whakatūwhera tahua" aria-controls="mobile-menu" aria-expanded="false"><span class="bars"><span></span></span></button>
     </div>
   </div>
 
@@ -861,6 +869,5 @@
 </script>
 
     <!-- Cloudflare Web Analytics: privacy-friendly, no cookies. Token set via repo variable CF_ANALYTICS_TOKEN at build time, or replace inline. -->
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "CF_ANALYTICS_TOKEN"}'></script>
 </body>
 </html>
