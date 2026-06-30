@@ -22,6 +22,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Inject Cloudflare Web Analytics token
+        env:
+          CF_TOKEN: ${{ vars.CF_ANALYTICS_TOKEN }}
+        run: |
+          if [ -n "$CF_TOKEN" ]; then
+            grep -rl 'CF_ANALYTICS_TOKEN' --include='*.html' . | xargs -r sed -i "s/CF_ANALYTICS_TOKEN/$CF_TOKEN/g"
+            echo "Injected Cloudflare Web Analytics token into HTML files."
+          else
+            echo "CF_ANALYTICS_TOKEN repo variable not set — stripping beacon to avoid 'CF_ANALYTICS_TOKEN' literal in deploy."
+            grep -rl 'CF_ANALYTICS_TOKEN' --include='*.html' . | xargs -r sed -i "/cloudflareinsights/d"
+          fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
