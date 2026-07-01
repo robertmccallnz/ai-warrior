@@ -187,6 +187,20 @@
   .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
   .tag-chip{padding:8px 14px;border:1px solid var(--line);font-size:12px;font-family:'Bebas Neue',sans-serif;letter-spacing:0.18em}
 
+
+  /* ECOSYSTEM */
+  .eco{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .eco-card{display:flex;flex-direction:column;justify-content:space-between;padding:26px 24px;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--card-fg);transition:transform .15s ease,border-color .15s ease;min-height:190px}
+  .eco-card:hover{transform:translateY(-3px);border-color:var(--red)}
+  .eco-card.featured{border-left:6px solid var(--red)}
+  .eco-card .eco-tag{font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:11px;color:var(--red);margin-bottom:10px}
+  .eco-card h4{font-family:'Bebas Neue',sans-serif;font-size:24px;margin:0 0 8px;letter-spacing:0.02em;line-height:1.1}
+  .eco-card p{color:var(--muted);margin:0 0 14px;font-size:14px;line-height:1.55}
+  .eco-card .eco-arrow{font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:12px;color:var(--fg);border-top:2px solid var(--red);padding-top:10px;display:inline-block;align-self:flex-start;margin-top:auto}
+  .eco-card:hover .eco-arrow{color:var(--red)}
+  @media (max-width:1000px){ .eco{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:620px){ .eco{grid-template-columns:1fr} }
+
   /* SOCIAL KIT */
   .kit-bar{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 28px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--red);margin-bottom:30px;flex-wrap:wrap}
   .kit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -282,6 +296,7 @@
       <a href="https://robertmccallnz.github.io/thinkers-mapper/" target="_blank" rel="noopener">Mapa</a>
       <a href="#pillars">Säulen</a>
       <a href="#tools">Werkzeuge</a>
+      <a href="#ecosystem">Ökosystem</a>
       <a href="#kit">Soziales Kit</a>
       <a href="https://robertmccallnz.github.io/kiwidialecticcalendar-/badges/" target="_blank" rel="noopener">Distintivos</a>
       <a href="#media-kit">Pressemappe</a>
@@ -315,6 +330,7 @@
     <a href="https://robertmccallnz.github.io/thinkers-mapper/" target="_blank" rel="noopener">Thinkers Map</a>
     <a href="#pillars">Säulen</a>
     <a href="#tools">Werkzeuge</a>
+    <a href="#ecosystem">Ökosystem</a>
     <a href="#kit">Soziales Kit</a>
     <a href="https://robertmccallnz.github.io/kiwidialecticcalendar-/badges/" target="_blank" rel="noopener">Abzeichen</a>
     <a href="#media-kit">Pressemappe</a>
@@ -532,12 +548,66 @@
 </section>
 
 
+<!-- ECOSYSTEM -->
+<section id="ecosystem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">06 · Das Ökosystem</div>
+        <h2>Schwesterseiten des Kaupapa.</h2>
+        <div class="rule" style="margin-top:14px"></div>
+      </div>
+      <p class="right">Jedes Projekt unten ist frei zu lesen und frei zu teilen. Verschiedene Räume im selben Haus.</p>
+    </div>
+
+    <div class="eco reveal">
+      <a class="eco-card featured" href="https://www.te-pa.org" target="_blank" rel="noopener">
+        <div class="eco-tag">Kaupapa Māori</div>
+        <h4>Te Pā Tūwatawata</h4>
+        <p>KI, Tikanga und Māori-Datensouveränität. Sechs Module, zweisprachig, kaitiaki-geführt.</p>
+        <div class="eco-arrow">Te Pā öffnen →</div>
+      </a>
+      <a class="eco-card" href="https://robertmccallnz.github.io/thinkers-mapper/" target="_blank" rel="noopener">
+        <div class="eco-tag">Das Rhizom</div>
+        <h4>Thinkers Mapper</h4>
+        <p>Jeder Kurs, jede Denker*in — als Rhizom kartiert. Knoten antippen, Lektion öffnen.</p>
+        <div class="eco-arrow">Karte öffnen →</div>
+      </a>
+      <a class="eco-card" href="https://www.kiwidialectic.com" target="_blank" rel="noopener">
+        <div class="eco-tag">Die Presse</div>
+        <h4>Kiwi Dialectic auf Substack</h4>
+        <p>Die wöchentliche Lektüre der Arbeiter*innen. Jede Lektion lebt hier zuerst.</p>
+        <div class="eco-arrow">Auf Substack lesen →</div>
+      </a>
+      <a class="eco-card" href="https://robertmccallnz.github.io/ai-literacy-for-families/" target="_blank" rel="noopener">
+        <div class="eco-tag">Die Familie</div>
+        <h4>AI Literacy for Families</h4>
+        <p>Ein 6-wöchiger KI-Grundkurs für Eltern und Jugendliche. CC BY-SA 4.0.</p>
+        <div class="eco-arrow">Kurs öffnen →</div>
+      </a>
+      <a class="eco-card" href="https://robertmccallnz.github.io/cooperative-aotearoa/" target="_blank" rel="noopener">
+        <div class="eco-tag">Die Gewerkschaft</div>
+        <h4>Cooperative Aotearoa</h4>
+        <p>Wie man eine Kooperative gründet — 6 Module, kostenlos, zweisprachig.</p>
+        <div class="eco-arrow">Kurs öffnen →</div>
+      </a>
+      <a class="eco-card" href="https://robertmccallnz.github.io/kiwidialecticcalendar-/badges/" target="_blank" rel="noopener">
+        <div class="eco-tag">Der Kalender</div>
+        <h4>Calendar & Badges</h4>
+        <p>Kurskalender (.ics) und Abschluss-Abzeichen (pou tohu). Datenquelle der Karte.</p>
+        <div class="eco-arrow">Kalender öffnen →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
 <!-- ABOUT -->
 <section id="about" class="about">
   <div class="wrap">
     <div class="section-head reveal">
       <div>
-        <div class="kicker">06 · Der Autor</div>
+        <div class="kicker">07 · Der Autor</div>
         <h2>Über Robert</h2>
         <div class="rule" style="margin-top:14px"></div>
       </div>
